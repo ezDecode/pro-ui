@@ -138,10 +138,11 @@ export function SourceCodeClient({
 			)}
 			<CodeBlock
 				raw={code}
-				className="max-h-[500px] overflow-auto m-0 rounded-none border-0"
+				wrapperClassName="my-0"
+				className="max-h-[500px] overflow-auto m-0 rounded-none border-0 p-0"
 			>
 				<code
-					className="font-mono text-sm"
+					className="font-mono text-sm [&>pre]:m-0 [&>pre]:p-5"
 					dangerouslySetInnerHTML={{ __html: html }}
 				/>
 			</CodeBlock>

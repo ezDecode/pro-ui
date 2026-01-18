@@ -1,6 +1,6 @@
 import { InspirationsSection } from "@/components/core/inspirations-section";
 import { ArrowRight02Icon, HugeiconsIcon } from "@/components/icons";
-import { GitHub } from "@/components/icons/github";
+import { GitHubIcon } from "@/components/icons/social-icons";
 import { GridSeparator } from "@/components/ui/grid-separator";
 import { Footer } from "@/registry/new-york/ui/footer";
 import { getNavigation } from "@/lib/navigation";
@@ -41,15 +41,20 @@ export default function Home() {
 
 			{/* Hero Section with breathing space */}
 			<section className="screen-line-after py-12 md:py-20 lg:py-28">
-				<Image
-					src={"/media/img_logo.png"}
-					alt="Skie Logo"
-					width={150}
-					height={150}
-					className="aspect-auto"
-				/>
+				<div className="relative mb-4 w-fit screen-line-before screen-line-after border-r border-edge">
+					<div className="grid-pattern-subtle">
+						<Image
+							src={"/media/img_logo.png"}
+							alt="Skie Logo"
+							width={150}
+							height={150}
+							className="aspect-auto"
+						/>
+					</div>
+				</div>
+				<GridSeparator size="sm" />
 
-				<h1 className="mt-8 text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
+				<h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
 					Greetings from
 					<br />
 					<span className="text-muted-foreground">
@@ -65,7 +70,7 @@ export default function Home() {
 					these tools will be invaluable. Available as free, open-source, and select premium assets.
 				</p>
 
-				<div className="flex flex-wrap items-center justify-start gap-3 mt-8">
+				<div className="flex flex-wrap items-center justify-start gap-3 mt-4">
 					<Link href="/docs">
 						<RaisedButton
 							size="default"
@@ -82,7 +87,7 @@ export default function Home() {
 						rel="noreferrer"
 					>
 						<RaisedButton size="icon" color="#3b3b3b" className="rounded-lg">
-							<GitHub className="h-6 w-6" />
+							<GitHubIcon className="h-6 w-6" />
 						</RaisedButton>
 					</Link>
 				</div>

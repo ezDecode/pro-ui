@@ -12,9 +12,9 @@ interface MagneticButtonProps {
 	style?: React.CSSProperties;
 }
 
-const MagneticButton: React.FC<MagneticButtonProps> = ({ 
-	children, 
-	className = '', 
+const MagneticButton: React.FC<MagneticButtonProps> = ({
+	children,
+	className = '',
 	onClick,
 	hoverVariant = 'light',
 	customColor,
@@ -120,12 +120,12 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
 		};
 	}, []);
 
-	const flairColor = customColor 
-		? '' 
+	const flairColor = customColor
+		? ''
 		: hoverVariant === 'light' ? 'bg-white' : 'bg-black';
-  
-	const textHoverColor = customColor 
-		? 'group-hover:text-black' 
+
+	const textHoverColor = customColor
+		? 'group-hover:text-white'
 		: hoverVariant === 'light' ? 'group-hover:text-black' : 'group-hover:text-white';
 
 	return (
@@ -142,7 +142,7 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
 				className="absolute top-0 left-0 w-full h-full pointer-events-none transform scale-0"
 				style={{ transformOrigin: '0 0' }}
 			>
-				<span 
+				<span
 					className={`absolute top-0 left-0 w-[170%] aspect-square rounded-full transform -translate-x-1/2 -translate-y-1/2 ${flairColor}`}
 					style={customColor ? { backgroundColor: customColor } : {}}
 				></span>

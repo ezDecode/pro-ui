@@ -6,8 +6,8 @@ export default function MagneticButtonDemo() {
   return (
     <div className="flex items-center justify-center w-full p-12">
       <MagneticButton
-        hoverVariant="light"
-        className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
+        customColor="#ea580c"
+        className="px-6 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-medium"
       >
         Hover over me
       </MagneticButton>

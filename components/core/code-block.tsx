@@ -7,10 +7,12 @@ import { cn } from "@/lib/utils";
 interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children: React.ReactNode;
   raw?: string;
+  wrapperClassName?: string;
 }
 
 export function CodeBlock({
   className,
+  wrapperClassName,
   children,
   raw,
   ...props
@@ -25,7 +27,7 @@ export function CodeBlock({
   }, [raw, children]);
 
   return (
-    <div className="group relative my-4">
+    <div className={cn("group relative my-4", wrapperClassName)}>
       <pre
         ref={preRef}
         className={cn(

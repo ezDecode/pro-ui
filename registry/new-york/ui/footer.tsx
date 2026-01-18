@@ -162,7 +162,7 @@ export function Footer({ navigation = [] }: FooterProps) {
         {/* Bottom Row: Copyright + Live Time */}
         <div className="flex flex-col items-center gap-2 pt-6 border-t border-border/50">
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} Creative Sky Media. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} CreativeSky Media. All rights reserved.</span>
             <span className="text-muted-foreground/40">·</span>
             <span className="tabular-nums font-mono">{time || "00:00:00"} IST</span>
           </div>
