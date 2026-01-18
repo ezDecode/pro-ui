@@ -1,4 +1,3 @@
-import { ComponentsGrid } from "@/components/core/components-grid";
 import { InspirationsSection } from "@/components/core/inspirations-section";
 import { ArrowRight02Icon, HugeiconsIcon } from "@/components/icons";
 import { GitHub } from "@/components/icons/github";
@@ -30,10 +29,6 @@ export default function Home() {
 	const softwareSchema = generateSoftwareSchema();
 
 	const navigation = getNavigation();
-	const componentsSection = navigation.find(
-		(section) => section.title === "Components",
-	);
-	const components = componentsSection?.items || [];
 
 	return (
 		<>
@@ -42,8 +37,10 @@ export default function Home() {
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: json schema
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
 			/>
-			<div className="relative px-4">
-				<section className="mx-auto flex flex-col max-w-[52rem] gap-5 py-8 md:py-16 lg:py-24">
+			{/* Home page: Match navbar width (52rem) */}
+			<div className="mx-auto max-w-[52rem]">
+				{/* Center content column */}
+				<section className="flex flex-col gap-5 py-8 md:py-16 lg:py-24">
 					<Image
 						src={"/media/img_logo.png"}
 						alt="Skie Logo"
@@ -53,10 +50,10 @@ export default function Home() {
 					/>
 
 					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
-						Greetings from Skie UI
+						Greetings from
 						<br />
 						<span className="text-muted-foreground">
-							Solo Developer Building motion interactions.
+							Solo developer building motion interactions.
 						</span>
 					</h1>
 
@@ -108,8 +105,7 @@ export default function Home() {
 					{/* Inspirations Section - Auto-populated from lib/inspirations.ts */}
 					<InspirationsSection className="mt-6 mb-12" />
 
-					<ComponentsGrid components={components} />
-					<Footer />
+					<Footer navigation={navigation} />
 				</section>
 			</div>
 		</>

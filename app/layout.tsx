@@ -68,7 +68,10 @@ export default function RootLayout({
 				>
 					<QueryProvider>
 						<NavbarWrapper />
-						{children}
+						{/* Base container - pages control their own width */}
+						<div className="w-full px-4">
+							{children}
+						</div>
 					</QueryProvider>
 				</ThemeProvider>
 			</body>

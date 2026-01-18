@@ -11,7 +11,6 @@ import {
 	UserLove01Icon
 } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { ComponentPreviewTooltip } from "@/registry/new-york/ui/component-preview-tooltip";
 import type { NavSection } from "@/types/nav-item";
 import type { IconSvgElement } from "@hugeicons/react";
 import Image from "next/image";
@@ -43,15 +42,9 @@ const socialIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
 export function DocsSidebarClient({ navigation }: DocsSidebarClientProps) {
 	const pathname = usePathname();
 
-	// Extract component name from href (e.g., "/docs/components/todo-item" -> "todo-item")
-	const getComponentName = (href: string): string | null => {
-		const match = href.match(/\/docs\/components\/([^/]+)$/);
-		return match ? match[1] : null;
-	};
-
 	return (
-		<aside className="sticky top-14 hidden md:block w-full md:w-[220px] lg:w-[240px] shrink-0 h-[calc(100vh-3.5rem)]">
-			<div className="py-10  lg:py-8 overflow-auto h-full">
+		<aside className="sticky top-14 hidden lg:block w-[15rem] shrink-0 h-[calc(100vh-3.5rem)]">
+			<div className="py-8 overflow-auto h-full pr-4">
 				<nav className="grid grid-flow-row auto-rows-max text-sm">
 					{navigation.map((section) => (
 						<div key={section.title} className="pb-6">
@@ -60,49 +53,31 @@ export function DocsSidebarClient({ navigation }: DocsSidebarClientProps) {
 									{section.title}
 								</h4>
 							)}
-							{section.items && (
-								<div className="grid grid-flow-row auto-rows-max gap-1">
+							{section.items && section.items.length > 0 && (
+								<div className="flex flex-col gap-1 mt-1">
 									{section.items.map((item) => {
-										const componentName = getComponentName(item.href);
-										const isComponentPage = item.href.includes("/components/");
-										const isExternalLink = item.href.startsWith("http");
-										const PageIcon = pageIcons[item.title];
+										const Icon = pageIcons[item.title];
 										const SocialIcon = socialIcons[item.title];
-
-										// Brand colors for social icons
-										const iconColor =
-											item.title === "Discord"
-												? "text-[#5865F2]"
-												: item.title === "Twitter"
-													? "text-[#1DA1F2]"
-													: "text-foreground/50";
+										const isExternal = item.href.startsWith("http");
 
 										const linkContent = (
 											<>
-												{item.icon ? (
-													<Image
-														src={item.icon}
-														alt=""
-														className="w-4 h-4"
-														width={16}
-														height={16}
-													/>
-												) : PageIcon ? (
+												{Icon && (
 													<HugeiconsIcon
-														icon={PageIcon}
-														size={17}
-														className={cn(iconColor)}
+														icon={Icon}
+														className="size-4 text-muted-foreground group-hover:text-accent-foreground transition-colors"
 													/>
-												) : SocialIcon ? (
-													<SocialIcon className={cn("w-4 h-4", iconColor)} />
-												) : null}
-
-												{item.title}
+												)}
+												{SocialIcon && (
+													<SocialIcon className="size-4 text-muted-foreground group-hover:text-accent-foreground transition-colors" />
+												)}
+												<span>{item.title}</span>
 											</>
 										);
 
-										const linkElement = isExternalLink ? (
+										return isExternal ? (
 											<a
+												key={item.href}
 												href={item.href}
 												target="_blank"
 												rel="noopener noreferrer"
@@ -112,6 +87,7 @@ export function DocsSidebarClient({ navigation }: DocsSidebarClientProps) {
 											</a>
 										) : (
 											<Link
+												key={item.href}
 												href={item.href}
 												className={cn(
 													"group flex w-fit items-center gap-1.5 text-sm rounded-md border border-transparent px-2 py-1 hover:bg-accent hover:text-accent-foreground font-medium text-foreground",
@@ -121,22 +97,6 @@ export function DocsSidebarClient({ navigation }: DocsSidebarClientProps) {
 												{linkContent}
 											</Link>
 										);
-
-										// Wrap component links with preview tooltip
-										if (isComponentPage && componentName) {
-											return (
-												<ComponentPreviewTooltip
-													key={item.href}
-													componentName={componentName}
-													side="right"
-													height={200}
-												>
-													{linkElement}
-												</ComponentPreviewTooltip>
-											);
-										}
-
-										return <div key={item.href}>{linkElement}</div>;
 									})}
 								</div>
 							)}

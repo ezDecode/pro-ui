@@ -25,11 +25,12 @@ export function CodeBlock({
   }, [raw, children]);
 
   return (
-    <div className="group relative my-4 overflow-hidden rounded-xl border border-border/10 bg-zinc-100 dark:bg-zinc-800">
+    <div className="group relative my-4">
       <pre
         ref={preRef}
         className={cn(
-          "overflow-x-auto p-5 font-mono text-sm leading-relaxed scrollbar-hide",
+          "overflow-x-auto rounded-xl p-5 font-mono text-sm leading-relaxed scrollbar-hide",
+          "bg-zinc-100 dark:bg-zinc-900",
           className
         )}
         {...props}

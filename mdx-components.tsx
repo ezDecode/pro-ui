@@ -7,7 +7,7 @@ import { SourceCode } from "@/components/core/source-code";
 import { Download01Icon, HugeiconsIcon } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { ComponentPreviewTooltip } from "@/registry/new-york/ui/component-preview-tooltip";
+
 import { PropsTable, PropItem } from "@/components/mdx/PropsTable";
 import { Steps, Step } from "@/components/mdx/Steps";
 import { Callout } from "@/components/mdx/Callout";
@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
 		Link,
 		ComponentPreview,
-		ComponentPreviewTooltip,
+
 		InstallCommand,
 		SourceCode,
 		Download: () => <HugeiconsIcon icon={Download01Icon} size={16} />,

@@ -7,8 +7,13 @@ export default function DocsLayout({
 }) {
 	return (
 		<div className="border-b">
-			<div className="items-start md:grid md:grid-cols-[15rem_minmax(0,1fr)] md:gap-4 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-6 px-4">
+			{/* Docs: 3-column grid centered to match navbar alignment */}
+			{/* Total: 15rem (sidebar) + 52rem (content) + 15rem (TOC) = 82rem */}
+			<div className="mx-auto max-w-[82rem] grid grid-cols-1 lg:grid-cols-[15rem_minmax(0,1fr)_15rem]">
+				{/* Left column: Sidebar */}
 				<DocsSidebar />
+
+				{/* Center + Right columns: handled by doc-page-layout */}
 				{children}
 			</div>
 		</div>

@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import type { NavSection } from "@/types/nav-item";
 
-export function Footer() {
+interface FooterProps {
+  navigation?: NavSection[];
+}
+
+export function Footer({ navigation = [] }: FooterProps) {
   const [time, setTime] = useState<string>("");
 
   useEffect(() => {
@@ -24,44 +29,147 @@ export function Footer() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <footer className="w-full border-t border-border pt-8 pb-32 sm:pb-28 md:pt-10 md:pb-8 mt-16">
-      <div className="flex flex-col items-center gap-5 sm:gap-6">
-        {/* Contact Section */}
-        <div className="flex flex-col items-center gap-1.5">
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            Want to get in touch?
-          </p>
-          <Link
-            href="mailto:ezdecode@gmail.com"
-            className="text-sm sm:text-base font-medium text-foreground hover:text-foreground/70 transition-colors"
-          >
-            ezdecode@gmail.com
-          </Link>
-        </div>
+  // Extract sections from navigation
+  const welcomeSection = navigation.find((s) => s.title === "Welcome");
+  const componentsSection = navigation.find((s) => s.title === "Components");
+  const socialsSection = navigation.find((s) => s.title === "Socials");
 
-        {/* Info Row - Responsive */}
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-3 sm:gap-y-1 text-xs text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <span>Based in IND</span>
-            <span className="text-muted-foreground/50">·</span>
-            <span className="tabular-nums font-mono">{time || "00:00:00"}</span>
+  return (
+    <footer className="w-full border-t border-border pt-10 pb-8 mt-16">
+      <div className="flex flex-col gap-10">
+        {/* Three Column Navigation Grid */}
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          {/* Socials Column */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Socials</h3>
+            <ul className="space-y-2.5">
+              {socialsSection?.items && socialsSection.items.length > 0 ? (
+                socialsSection.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      href="https://github.com/ezDecode"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      GitHub
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://x.com/ezDecode"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Twitter
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
 
-          <span className="hidden sm:inline text-muted-foreground/50">·</span>
+          {/* Welcome Column */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Welcome</h3>
+            <ul className="space-y-2.5">
+              {welcomeSection?.items && welcomeSection.items.length > 0 ? (
+                welcomeSection.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li>
+                    <Link href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Introduction
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/contributors" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Contributors
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/installation" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Installation
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
 
-          <Link
-            href="https://github.com/ezDecode"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            @ezDecode
-          </Link>
+          {/* Components Column */}
+          <div className="space-y-4 col-span-2 sm:col-span-1">
+            <h3 className="text-sm font-semibold text-foreground">Components</h3>
+            <ul className="space-y-2.5">
+              {componentsSection?.items && componentsSection.items.length > 0 ? (
+                componentsSection.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li>
+                    <Link href="/docs/components/adaptive-tooltip" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Adaptive Tooltip
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/components/filter-chips" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Filter Chips
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/components/magnetic-button" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Magnetic Button
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/docs/components/scroll-reveal-text" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Scroll Reveal Text
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+        </div>
 
-          <span className="hidden sm:inline text-muted-foreground/50">·</span>
-
-          <span>© {new Date().getFullYear()}</span>
+        {/* Bottom Row: Copyright + Live Time */}
+        <div className="flex flex-col items-center gap-2 pt-6 border-t border-border/50">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span>© {new Date().getFullYear()} Creative Sky Media. All rights reserved.</span>
+            <span className="text-muted-foreground/40">·</span>
+            <span className="tabular-nums font-mono">{time || "00:00:00"} IST</span>
+          </div>
         </div>
       </div>
     </footer>

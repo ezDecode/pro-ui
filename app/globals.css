@@ -173,6 +173,53 @@
 	.scrollbar-hide::-webkit-scrollbar {
 		display: none;
 	}
+
+	/* Theme-adaptive code syntax highlighting (shiki) */
+	code[data-theme],
+	code[data-theme] span {
+		color: var(--shiki-light);
+	}
+
+	.dark code[data-theme],
+	.dark code[data-theme] span {
+		color: var(--shiki-dark);
+	}
+
+	/* Override rehype-pretty-code figure wrapper */
+	figure[data-rehype-pretty-code-figure] {
+		margin: 1rem 0;
+	}
+
+	figure[data-rehype-pretty-code-figure] pre {
+		border-radius: 0.75rem;
+		padding: 1.25rem;
+		overflow-x: auto;
+		font-size: 0.875rem;
+		line-height: 1.6;
+	}
+
+	/* Light mode: subtle gray background */
+	figure[data-rehype-pretty-code-figure] pre {
+		background-color: #f4f4f5 !important;
+		/* zinc-100 */
+	}
+
+	/* Dark mode: dark background */
+	.dark figure[data-rehype-pretty-code-figure] pre {
+		background-color: #18181b !important;
+		/* zinc-900 */
+	}
+
+	/* Remove any nested backgrounds */
+	.github-light,
+	.github-dark {
+		background-color: transparent !important;
+	}
+
+	figure[data-rehype-pretty-code-figure] code {
+		background: transparent !important;
+		padding: 0;
+	}
 }
 
 /* -------------------------------------------------------------------------- */

@@ -33,10 +33,11 @@ export function Navbar({ navigation }: NavbarProps) {
   const { data: stars } = useGitHubStars();
 
   return (
-    <header className="sticky top-0 z-50 w-full py-4">
+    <header className="sticky top-0 z-50 w-full py-4 px-4">
       <div className={cn(
-        "mx-auto flex items-center gap-4 rounded-xl bg-background/60 backdrop-blur-md shadow-md border border-border/40 px-4 py-2.5 supporting-backdrop-blur",
-        pathname?.startsWith("/docs") ? "max-w-2xl" : "max-w-[52rem]"
+        "mx-auto flex items-center gap-4 rounded-xl px-4 py-2.5 max-w-[52rem]",
+        "bg-background/60 backdrop-blur-md border border-border/50 shadow-md",
+        "relative before:absolute before:inset-0 before:rounded-xl before:border-t before:border-white/20 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none before:content-['']"
       )}>
         <div className="mr-4 flex">
           <Link
@@ -76,24 +77,23 @@ export function Navbar({ navigation }: NavbarProps) {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <Button
-              variant="secondary"
-              onClick={() => setOpen(true)}
-              className="py-0! h-9 text-sm"
-            >
-              <span className="hidden lg:inline-flex">
-                Search documentation...
-              </span>
-              <span className="inline-flex lg:hidden">Search...</span>
-              <KbdGroup>
-                <Kbd className="outline-muted-foreground/20 outline-1">⌘</Kbd>
-                <Kbd className="outline-muted-foreground/20 outline-1">K</Kbd>
-              </KbdGroup>
-            </Button>
-          </div>
-          <Separator orientation="vertical" className="h-6" />
+        {/* Right side: Search + Theme - stay together */}
+        <div className="flex items-center gap-2 ml-auto">
+          <Button
+            variant="secondary"
+            onClick={() => setOpen(true)}
+            className="py-0! h-9 text-sm"
+          >
+            <span className="hidden lg:inline-flex">
+              Search documentation...
+            </span>
+            <span className="inline-flex lg:hidden">Search...</span>
+            <KbdGroup>
+              <Kbd className="outline-muted-foreground/20 outline-1">⌘</Kbd>
+              <Kbd className="outline-muted-foreground/20 outline-1">K</Kbd>
+            </KbdGroup>
+          </Button>
+          <Separator orientation="vertical" className="h-6 hidden sm:block" />
           <nav className="flex items-center gap-1">
             <ThemeToggle />
           </nav>
