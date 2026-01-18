@@ -3,6 +3,7 @@
 import * as React from "react";
 import { codeToHtml } from "shiki";
 import { motion } from "framer-motion";
+import { DependencyPills } from "@/components/core/dependency-pills";
 import { FullscreenButton } from "@/components/core/fullscreen-button";
 import {
 	Copy01Icon,
@@ -25,6 +26,12 @@ interface ComponentPreviewClientProps
 	code: string;
 	/** Optional filename for download */
 	filename?: string;
+	/** Optional list of dependencies to show in footer */
+	dependencies?: Array<{
+		name: string;
+		url: string;
+		color?: string;
+	}>;
 }
 
 type TabValue = "preview" | "code";
@@ -38,6 +45,7 @@ export function ComponentPreviewClient({
 	className,
 	code,
 	filename = "component.tsx",
+	dependencies,
 	...props
 }: ComponentPreviewClientProps) {
 	const [activeTab, setActiveTab] = React.useState<TabValue>("preview");
@@ -179,6 +187,14 @@ export function ComponentPreviewClient({
 					</div>
 				)}
 			</div>
+
+			{/* Dependencies Footer - Styled as requested */}
+			{dependencies && dependencies.length > 0 && (
+				<div className="mt-4 flex flex-wrap items-center gap-2">
+					<span className="text-sm font-medium text-muted-foreground mr-1">Dependencies:</span>
+					<DependencyPills dependencies={dependencies} />
+				</div>
+			)}
 		</div>
 	);
 }

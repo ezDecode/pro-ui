@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CodeBlock } from "@/components/core/code-block";
 import { ComponentPreview } from "@/components/core/component-preview";
 import { InstallCommand } from "@/components/core/install-command";
+import { Shoutout } from "@/components/core/shoutout";
 import { SourceCode } from "@/components/core/source-code";
 import { Download01Icon, HugeiconsIcon } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,6 +17,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
 		Link,
 		ComponentPreview,
+		Shoutout,
 
 		InstallCommand,
 		SourceCode,

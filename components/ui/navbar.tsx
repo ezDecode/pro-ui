@@ -15,8 +15,7 @@ import {
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import type { NavSection } from "@/types/nav-item";
-import { Kbd, KbdGroup } from "./kbd";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { Kbd } from "./kbd";
 
 interface NavbarProps {
   navigation: NavSection[];
@@ -83,20 +82,25 @@ export function Navbar({ navigation }: NavbarProps) {
 
           {/* Right side: Search + Theme */}
           <div className="flex items-center gap-2">
-            {/* Search Button */}
-            <RaisedButton
+            {/* Search Button - Simple styled for both themes */}
+            <button
               type="button"
               onClick={() => setOpen(true)}
-              size="sm"
-              color="#27272a"
-              className="px-3 text-muted-foreground hover:text-foreground font-normal"
+              className={cn(
+                "inline-flex items-center gap-3 h-9 px-3 rounded-lg",
+                "text-sm font-normal text-muted-foreground",
+                "bg-muted/50 hover:bg-muted",
+                "border border-border/50 hover:border-border",
+                "transition-colors duration-150",
+                "cursor-pointer"
+              )}
             >
-              <span className="hidden sm:inline-flex mr-2">Search...</span>
-              <KbdGroup>
+              <span className="hidden sm:inline-flex">Search...</span>
+              <span className="inline-flex items-center gap-1">
                 <Kbd>⌘</Kbd>
                 <Kbd>K</Kbd>
-              </KbdGroup>
-            </RaisedButton>
+              </span>
+            </button>
 
             <ThemeToggle />
           </div>

@@ -1,3 +1,4 @@
+import { DependencyPills } from "@/components/core/dependency-pills";
 import { InspirationsSection } from "@/components/core/inspirations-section";
 import { ArrowRight02Icon, HugeiconsIcon } from "@/components/icons";
 import { GitHubIcon } from "@/components/icons/social-icons";
@@ -39,8 +40,8 @@ export default function Home() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
 			/>
 
-			{/* Hero Section with breathing space */}
-			<section className="screen-line-after py-12 md:py-20 lg:py-28">
+			{/* Hero Section */}
+			<section className="screen-line-after py-8 md:py-12 lg:py-16">
 				<div className="relative mb-4 w-fit screen-line-before screen-line-after border-r border-edge">
 					<div className="grid-pattern-subtle">
 						<Image
@@ -54,23 +55,26 @@ export default function Home() {
 				</div>
 				<GridSeparator size="sm" />
 
-				<h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
-					Greetings from
-					<br />
-					<span className="text-muted-foreground">
-						Solo developer building motion interactions.
-					</span>
-				</h1>
+				<div className="screen-line-before screen-line-after py-2">
+					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
+						Greetings from
+						<br />
+						<span className="text-muted-foreground">
+							Solo developer building motion interactions.
+						</span>
+					</h1>
+				</div>
+				<GridSeparator size="sm" />
 
 				{/* Polished Intro Paragraph */}
-				<p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base max-w-2xl">
+				<p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base max-w-2xl">
 					A laboratory for refined components, motion experiments, and interactions.
 					We recreate the best design animations on the web to make them accessible
 					and open-source for all designers. If you&apos;re building modern interfaces,
 					these tools will be invaluable. Available as free, open-source, and select premium assets.
 				</p>
 
-				<div className="flex flex-wrap items-center justify-start gap-3 mt-4">
+				<div className="flex flex-wrap items-center justify-start gap-2 mt-3">
 					<Link href="/docs">
 						<RaisedButton
 							size="default"
@@ -94,14 +98,17 @@ export default function Home() {
 			</section>
 
 			{/* Separator with diagonal pattern */}
-			<GridSeparator size="lg" />
+			<GridSeparator size="sm" />
 
 			{/* About Section */}
-			<section className="screen-line-after py-12 md:py-16">
-				<div className="space-y-4 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
-					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
-						Know me
-					</h1>
+			<section className="screen-line-after py-6 md:py-10">
+				<div className="space-y-3 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
+					<div className="screen-line-before screen-line-after py-2 mb-2">
+						<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl text-foreground">
+							Know me
+						</h1>
+					</div>
+					<GridSeparator size="sm" />
 					<p>
 						Basically, I wanted a place to store high-quality motion components that don&apos;t suck to implement.
 						I find cool interactions on the web, break them down, and rebuild them here so they are actually usable.
@@ -117,16 +124,36 @@ export default function Home() {
 			{/* Separator */}
 			<GridSeparator size="md" />
 
+			{/* Dependencies Section */}
+			<section className="screen-line-after py-6 md:py-8">
+				<div className="screen-line-before screen-line-after py-2 mb-2">
+					<h2 className="text-xl font-semibold tracking-tight">Built with</h2>
+				</div>
+				<GridSeparator size="sm" />
+				<DependencyPills
+					dependencies={[
+						{ name: "React", url: "https://react.dev", color: "#1e3a5f" },
+						{ name: "Motion", url: "https://motion.dev", color: "#302727ff" },
+						{ name: "GSAP", url: "https://gsap.com", color: "#0e3a0e" },
+						{ name: "Radix UI", url: "https://radix-ui.com", color: "#1a1a2e" },
+						{ name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
+					]}
+				/>
+			</section>
+
+			{/* Separator */}
+			<GridSeparator size="md" />
+
 			{/* Inspirations Section */}
-			<section className="screen-line-after py-10 md:py-14">
+			<section className="screen-line-after py-6 md:py-8">
 				<InspirationsSection className="mb-0" />
 			</section>
 
 			{/* Separator */}
-			<GridSeparator size="lg" />
+			<GridSeparator size="sm" />
 
 			{/* Footer Section */}
-			<section className="py-10 md:py-14">
+			<section className="py-6 md:py-8">
 				<Footer navigation={navigation} />
 			</section>
 		</>

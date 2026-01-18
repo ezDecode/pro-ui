@@ -1,5 +1,14 @@
 'use client';
 
+/**
+ * Scroll Reveal Text
+ * Scroll-locked text reveal animation with word-by-word glassmorphic effects.
+ * 
+ * @shoutout nvg8.io - The original inspiration for this scroll reveal effect
+ * @shoutout Motion (https://motion.dev) - Animation library for scroll-based transitions
+ * @author Skie (https://skie.dev)
+ */
+
 import { useRef, useMemo, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 

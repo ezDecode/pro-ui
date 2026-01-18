@@ -1,5 +1,13 @@
 "use client";
 
+/**
+ * Magnetic Button
+ * A button with magnetic cursor attraction powered by GSAP animations.
+ * 
+ * @shoutout GSAP (https://gsap.com) - The animation library powering this effect
+ * @author Skie (https://skie.dev)
+ */
+
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 

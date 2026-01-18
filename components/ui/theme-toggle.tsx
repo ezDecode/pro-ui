@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes";
 import * as React from "react";
 import { HugeiconsIcon, Moon02Icon, Sun03Icon } from "@/components/icons";
-import { Toggle } from "@/components/ui/toggle";
 import { RaisedButton } from "@/registry/new-york/ui/raised-button";
 
 export function ThemeToggle() {

@@ -3,7 +3,18 @@ title: Scroll Reveal Text
 description: Scroll-locked text reveal animation with word-by-word glassmorphic effects.
 ---
 
-<ComponentPreview name="scroll-reveal-text/default" />
+<ComponentPreview 
+name="scroll-reveal-text/default" 
+dependencies={[
+  { name: "React", url: "https://react.dev", color: "#1e3a5f" },
+  { name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
+  { name: "Motion", url: "https://motion.dev", color: "#1a1a1a" }
+]}
+/>
+
+<div className="mt-4 flex flex-col gap-2">
+  <Shoutout url="https://nvg8.io" label="nvg8.io" description="Original Inspiration" />
+</div>
 
 ## Features
 
@@ -67,6 +78,4 @@ Each word goes through three phases:
 | `primaryColor` | `string` | `"#ff6b00"` | Color for highlighted words (hex) |
 | `scrollContainerRef` | `RefObject` | - | Custom scroll container |
 
-## Dependencies
 
-- `framer-motion` - Animation library for scroll-based transitions

@@ -1,5 +1,13 @@
 "use client";
 
+/**
+ * Filter Chips
+ * Animated filter chips with spring physics and smooth layout transitions.
+ * 
+ * @shoutout Motion (https://motion.dev) - For shared layout animations
+ * @author Skie (https://skie.dev)
+ */
+
 import React, { useCallback, useMemo } from "react";
 import { motion, type Transition } from "framer-motion";
 
