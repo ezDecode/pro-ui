@@ -129,26 +129,7 @@ export function CommandMenuClient({
 					</CommandItem>
 				</CommandGroup>
 				<CommandSeparator />
-				<CommandGroup heading="Actions">
-					<CommandItem
-						onSelect={() =>
-							runCommand(() =>
-								window.open(
-									"https://github.com/ezDecode/skie-ui/issues/new",
-									"_blank",
-								),
-							)
-						}
-					>
-						<HugeiconsIcon
-							icon={GitPullRequestIcon}
-							size={16}
-							className="mr-2"
-						/>
-						<span>Request a Component</span>
-					</CommandItem>
-				</CommandGroup>
-				<CommandSeparator />
+
 				{navigation?.map((section) => (
 					<React.Fragment key={section.title || "getting-started"}>
 						<CommandGroup heading={section.title || "Getting Started"}>
