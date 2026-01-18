@@ -1,0 +1,98 @@
+---
+title: Filter Chips
+description: Animated filter chips with spring physics and smooth layout transitions.
+---
+
+<ComponentPreview name="filter-chips/default" />
+
+## Features
+
+- **Shared layout transitions** — Smooth background animation between chips
+- **Spring physics** — Natural, bouncy animations
+- **Multiple variants** — default, outline, ghost, pill
+- **Type-safe** — TypeScript generics for filter types
+- **Flexible** — Works as links or buttons
+
+## Installation
+
+<Tabs defaultValue="automatic" className="mt-4">
+  <TabsList>
+    <TabsTrigger value="automatic">Automatic</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="automatic">
+    Run the following command to add the component to your project:
+
+    ```bash
+    npx skie-ui add filter-chips
+    ```
+  </TabsContent>
+  <TabsContent value="manual">
+    1. Install dependencies:
+
+    ```bash
+    npm install framer-motion
+    ```
+
+    2. Copy the component code from [filter-chips.tsx](https://github.com/ezDecode/skie-ui/blob/main/registry/new-york/ui/filter-chips.tsx)
+
+    3. Add it to your project at `components/ui/filter-chips.tsx`
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { FilterChips } from "@/components/ui/filter-chips";
+
+type Category = "all" | "design" | "development";
+
+export function MyComponent() {
+  const [active, setActive] = useState<Category>("all");
+
+  const filters = [
+    { value: "all" as Category, label: "All" },
+    { value: "design" as Category, label: "Design" },
+    { value: "development" as Category, label: "Development" },
+  ];
+
+  return (
+    <FilterChips
+      filters={filters}
+      activeFilter={active}
+      onFilterChange={setActive}
+      variant="default"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `filters` | `Array<{value: T, label: string}>` | - | Array of filter options |
+| `activeFilter` | `T` | - | Currently active filter value |
+| `onFilterChange` | `(value: T) => void` | - | Callback when filter changes |
+| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"default"` | Visual style variant |
+| `mode` | `"link" \| "button"` | `"button"` | Render as links or buttons |
+| `className` | `string` | - | Additional CSS classes |
+
+## Variants
+
+- **default** — Filled background style
+- **outline** — Border style with transparent background
+- **ghost** — Minimal style, no background
+- **pill** — Rounded pill shape
+
+## Animation Configuration
+
+The component uses spring physics for smooth transitions:
+
+```tsx
+const spring = {
+  stiffness: 500,
+  damping: 35
+};
+```

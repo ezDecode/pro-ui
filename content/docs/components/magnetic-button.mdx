@@ -1,0 +1,108 @@
+---
+title: Magnetic Button
+description: A button with magnetic cursor attraction powered by GSAP animations.
+---
+
+<ComponentPreview name="magnetic-button/default" />
+
+## Features
+
+- **Magnetic attraction** — Button follows cursor with smooth animation
+- **GSAP powered** — High-performance animations
+- **Touch support** — Works on mobile devices
+- **Flair effects** — Optional pulse animation on hover
+- **Multiple variants** — light, dark, and custom colors
+- **Fully customizable** — Style with className and inline styles
+
+## Installation
+
+<Tabs defaultValue="automatic" className="mt-4">
+  <TabsList>
+    <TabsTrigger value="automatic">Automatic</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="automatic">
+    Run the following command to add the component to your project:
+
+    ```bash
+    npx skie-ui add magnetic-button
+    ```
+  </TabsContent>
+  <TabsContent value="manual">
+    1. Install dependencies:
+
+    ```bash
+    npm install gsap
+    ```
+
+    2. Copy the component code from [magnetic-button.tsx](https://github.com/ezDecode/skie-ui/blob/main/registry/new-york/ui/magnetic-button.tsx)
+
+    3. Add it to your project at `components/ui/magnetic-button.tsx`
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { MagneticButton } from "@/components/ui/magnetic-button";
+
+export function MyComponent() {
+  return (
+    <MagneticButton
+      hoverVariant="light"
+      className="px-6 py-3 bg-primary text-primary-foreground rounded-lg"
+    >
+      Click me
+    </MagneticButton>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | - | Button content |
+| `onClick` | `() => void` | - | Click handler |
+| `hoverVariant` | `"light" \| "dark" \| "custom"` | `"light"` | Hover effect style |
+| `customColor` | `string` | - | Custom color for hover effect (hex/rgb/hsl) |
+| `className` | `string` | - | Additional CSS classes |
+| `style` | `React.CSSProperties` | - | Inline styles |
+
+## Hover Variants
+
+- **light** — White glow effect (0, 0, 0 → 255, 255, 255)
+- **dark** — Dark glow effect (255, 255, 255 → 0, 0, 0)
+- **custom** — Use your own color with `customColor` prop
+
+## Examples
+
+### Custom Color
+
+```tsx
+<MagneticButton
+  hoverVariant="custom"
+  customColor="#ff6b00"
+>
+  Custom color
+</MagneticButton>
+```
+
+### Dark Variant
+
+```tsx
+<MagneticButton
+  hoverVariant="dark"
+  className="bg-white text-black"
+>
+  Dark effect
+</MagneticButton>
+```
+
+## Animation Details
+
+The magnetic effect uses GSAP's `quickSetter` for optimal performance:
+
+- **Attraction strength** — 40% of distance to cursor
+- **Duration** — 0.4s ease-out transition
+- **Cleanup** — Automatic event listener removal

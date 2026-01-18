@@ -1,0 +1,128 @@
+---
+title: Scroll Reveal Text
+description: Scroll-locked text reveal animation with word-by-word glassmorphic effects.
+---
+
+<ComponentPreview name="scroll-reveal-text/default" />
+
+## Features
+
+- **Scroll-locked animation** — Text reveals as you scroll
+- **Word-by-word reveal** — Each word animates individually
+- **Glassmorphic pills** — Subtle background effects on words
+- **Responsive** — Optimized for mobile and desktop
+- **Highlight support** — Emphasize specific words with custom colors
+- **Smooth physics** — Spring animations for natural motion
+
+## Installation
+
+<Tabs defaultValue="automatic" className="mt-4">
+  <TabsList>
+    <TabsTrigger value="automatic">Automatic</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="automatic">
+    Run the following command to add the component to your project:
+
+    ```bash
+    npx skie-ui add scroll-reveal-text
+    ```
+  </TabsContent>
+  <TabsContent value="manual">
+    1. Install dependencies:
+
+    ```bash
+    npm install framer-motion
+    ```
+
+    2. Copy the component code from [scroll-reveal-text.tsx](https://github.com/ezDecode/skie-ui/blob/main/registry/new-york/ui/scroll-reveal-text.tsx)
+
+    3. Add it to your project at `components/ui/scroll-reveal-text.tsx`
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollRevealTextFramer } from "@/components/ui/scroll-reveal-text";
+
+export function MyComponent() {
+  return (
+    <div className="h-screen overflow-y-auto">
+      <ScrollRevealTextFramer
+        title="Amazing Title"
+        phrase="Your text content here that will reveal word by word as users scroll"
+        highlightWords={["reveal", "word", "scroll"]}
+        primaryColor="#ff6b00"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `phrase` | `string` | - | The text content to reveal (required) |
+| `title` | `string` | - | Optional heading above the text |
+| `highlightWords` | `string[]` | `[]` | Words to highlight with primary color |
+| `primaryColor` | `string` | `"#ff6b00"` | Color for highlighted words (hex) |
+| `config` | `AnimationConfig` | - | Animation configuration overrides |
+| `scrollContainerRef` | `React.RefObject<HTMLDivElement>` | - | Custom scroll container (for previews) |
+
+### AnimationConfig
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `leadCount` | `number` | 15 (desktop), 10 (mobile) | Words ahead to show animated boxes |
+| `scrollDistance` | `number` | 60 (desktop), 40 (mobile) | Scroll distance per word in pixels |
+| `springStiffness` | `number` | `60` | Spring animation stiffness |
+| `springDamping` | `number` | `35` | Spring animation damping |
+
+## Examples
+
+### With Custom Configuration
+
+```tsx
+<ScrollRevealTextFramer
+  phrase="Customize the animation timing and physics"
+  config={{
+    leadCount: 20,
+    scrollDistance: 80,
+    springStiffness: 100,
+    springDamping: 40
+  }}
+/>
+```
+
+### In Custom Container
+
+```tsx
+const containerRef = useRef<HTMLDivElement>(null);
+
+<div ref={containerRef} className="h-[600px] overflow-y-auto">
+  <ScrollRevealTextFramer
+    phrase="Text in custom scrollable container"
+    scrollContainerRef={containerRef}
+  />
+</div>
+```
+
+## Animation Phases
+
+Each word goes through three phases:
+
+1. **Emergence** (0-15%) — Box fades in with scale
+2. **Focus** (15-60%) — Box reaches full opacity
+3. **Reveal** (60-100%) — Text fades in, box fades out
+
+## Performance
+
+Optimized for smooth scrolling:
+
+- Uses Framer Motion's `useSpring` for natural motion
+- Single spring instance shared across all words
+- Lower stiffness (60) for smoother transitions
+- Higher damping (35) to reduce bounce
+- `restDelta: 0.01` for fewer updates

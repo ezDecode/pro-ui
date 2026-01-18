@@ -1,0 +1,69 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry.json",
+	"name": "skie",
+	"homepage": "https://skie.dev",
+	"items": [
+		{
+			"name": "adaptive-tooltip",
+			"type": "registry:ui",
+			"title": "Adaptive Tooltip",
+			"description": "Intelligent tooltip system that adapts to user intent with confidence-based delays and smooth animations.",
+			"dependencies": [
+				"framer-motion",
+				"animejs",
+				"clsx"
+			],
+			"files": [
+				{
+					"path": "registry/new-york/ui/adaptive-tooltip.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "filter-chips",
+			"type": "registry:ui",
+			"title": "Filter Chips",
+			"description": "Animated filter chips with smooth shared layout transitions and spring physics for selection feedback.",
+			"dependencies": [
+				"framer-motion"
+			],
+			"files": [
+				{
+					"path": "registry/new-york/ui/filter-chips.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "magnetic-button",
+			"type": "registry:ui",
+			"title": "Magnetic Button",
+			"description": "Cursor-following button with magnetic attraction, GSAP-powered flair animation, and smooth physics.",
+			"dependencies": [
+				"gsap"
+			],
+			"files": [
+				{
+					"path": "registry/new-york/ui/magnetic-button.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "scroll-reveal-text",
+			"type": "registry:ui",
+			"title": "Scroll Reveal Text",
+			"description": "Scroll-locked text reveal with glassmorphic pill overlays that emerge, glow, and dissolve as you scroll.",
+			"dependencies": [
+				"framer-motion"
+			],
+			"files": [
+				{
+					"path": "registry/new-york/ui/scroll-reveal-text.tsx",
+					"type": "registry:ui"
+				}
+			]
+		}
+	]
+}
