@@ -94,6 +94,9 @@ export default function Home() {
 			{/* About Section */}
 			<section className="screen-line-after py-12 md:py-16">
 				<div className="space-y-4 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
+					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
+						Know me
+					</h1>
 					<p>
 						Basically, I wanted a place to store high-quality motion components that don&apos;t suck to implement.
 						I find cool interactions on the web, break them down, and rebuild them here so they are actually usable.

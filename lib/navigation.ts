@@ -108,7 +108,7 @@ export function getNavigation(): NavSection[] {
 }
 
 /**
- * Main navigation items (for navbar)
+ * Main navigation items (for navbar and menus)
  */
 export const mainNav = [
 	{
@@ -119,8 +119,5 @@ export const mainNav = [
 		title: "Components",
 		href: "/docs/components",
 	},
-	{
-		title: "Gallery",
-		href: "/docs/gallery",
-	},
 ];
+

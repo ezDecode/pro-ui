@@ -24,7 +24,7 @@ description: An intelligent tooltip component with intent-aware delays, keyboard
     Run the following command to add the component to your project:
 
     ```bash
-    npx skie-ui add adaptive-tooltip
+    coming soon
     ```
   </TabsContent>
   <TabsContent value="manual">
@@ -34,49 +34,41 @@ description: An intelligent tooltip component with intent-aware delays, keyboard
     npm install framer-motion animejs clsx
     ```
 
-    2. Copy the component code from [adaptive-tooltip.tsx](https://github.com/ezDecode/skie-ui/blob/main/registry/new-york/ui/adaptive-tooltip.tsx)
+    2. Create `components/ui/adaptive-tooltip.tsx` and add the following code:
 
-    3. Add it to your project at `components/ui/adaptive-tooltip.tsx`
+    <SourceCode name="adaptive-tooltip" />
   </TabsContent>
 </Tabs>
 
-## Usage
+## Interactions
 
-```tsx
-import { AdaptiveTooltip, AdaptiveTooltipItem } from "@/components/ui/adaptive-tooltip";
-
-export function MyComponent() {
-  return (
-    <AdaptiveTooltip>
-      <AdaptiveTooltipItem
-        trigger={<button>Hover me</button>}
-        content="Tooltip content"
-      />
-    </AdaptiveTooltip>
-  );
-}
-```
+| Trigger | Action |
+|---------|--------|
+| Hover | Tooltip appears after intent delay |
+| Quick Hover | Shorter delay for experienced users |
+| Cmd/Shift + Hover | Pins tooltip open |
+| Mouse Leave | Tooltip fades out |
+| Tab Focus | Keyboard accessible |
 
 ## Props
 
-### AdaptiveTooltip
-
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `children` | `React.ReactNode` | - | Tooltip items to render |
+| `items` | `TooltipItem[]` | - | Array of tooltip items |
+| `enablePinning` | `boolean` | `true` | Enable Cmd/Shift pinning |
 | `className` | `string` | - | Additional CSS classes |
 
-### AdaptiveTooltipItem
+### TooltipItem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `trigger` | `React.ReactNode` | - | Element that triggers the tooltip |
-| `content` | `React.ReactNode` | - | Tooltip content to display |
-| `className` | `string` | - | Additional CSS classes |
+| Prop | Type | Description |
+|------|------|-------------|
+| `icon` | `ReactNode` | Icon element to display |
+| `label` | `string` | Tooltip text |
+| `shortcut` | `ReactNode[]` | Optional keyboard shortcut keys |
+| `hasBadge` | `boolean` | Show notification badge |
 
-## Accessibility
+## Dependencies
 
-- Supports keyboard navigation with Tab key
-- Pin tooltip with Cmd (Mac) or Shift (Windows) key
-- ARIA labels for screen readers
-- Focus management
+- `framer-motion` - Animation transitions
+- `animejs` - Stagger micro-reveal effects
+- `clsx` - Utility for conditional classes

@@ -2,35 +2,46 @@ import { getSourceCode } from "@/lib/source";
 import { SourceCodeClient } from "./source-code-client";
 
 interface SourceCodeProps {
-	filePath: string;
+	/** Component name (e.g., "magnetic-button") - will look in registry/new-york/ui/{name}.tsx */
+	name?: string;
+	/** Full file path relative to project root */
+	filePath?: string;
+	/** Display title (auto-generated if not provided) */
 	title?: string;
+	/** Code language for syntax highlighting */
 	language?: string;
 }
 
 /**
  * Generate a display title from the file path
- * Examples:
- * - "registry/new-york/ui/author-tooltip.tsx" -> "components/ui/author-tooltip.tsx"
- * - "lib/utils/colorUtils.ts" -> "lib/utils/colorUtils.ts" (unchanged)
  */
 function generateTitle(filePath: string): string {
-	// Convert registry paths to components paths
 	return filePath.replace(/^registry\/[^/]+\//, "components/");
 }
 
 /**
  * Server component to display source code from a file
- * Automatically reads the file and displays it with syntax highlighting
- * Title is auto-generated from filePath if not provided
+ * 
+ * Usage in MDX:
+ * ```mdx
+ * // By component name (recommended)
+ * <SourceCode name="magnetic-button" />
+ * 
+ * // By full path
+ * <SourceCode filePath="registry/new-york/ui/filter-chips.tsx" />
+ * ```
  */
-export function SourceCode({ filePath, title, language }: SourceCodeProps) {
-	const code = getSourceCode(filePath);
+export function SourceCode({ name, filePath, title, language }: SourceCodeProps) {
+	// Determine file path from name or use provided filePath
+	const resolvedPath = filePath || (name ? `registry/new-york/ui/${name}.tsx` : "");
 
-	// Infer language from file extension if not provided
-	const lang = language || filePath.split(".").pop() || "tsx";
+	if (!resolvedPath) {
+		return <div className="text-red-500">Error: Provide either name or filePath prop</div>;
+	}
 
-	// Auto-generate title from filePath if not provided
-	const displayTitle = title || generateTitle(filePath);
+	const code = getSourceCode(resolvedPath);
+	const lang = language || resolvedPath.split(".").pop() || "tsx";
+	const displayTitle = title || generateTitle(resolvedPath);
 
 	return <SourceCodeClient code={code} title={displayTitle} language={lang} />;
 }

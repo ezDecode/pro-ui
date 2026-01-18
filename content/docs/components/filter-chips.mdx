@@ -24,7 +24,7 @@ description: Animated filter chips with spring physics and smooth layout transit
     Run the following command to add the component to your project:
 
     ```bash
-    npx skie-ui add filter-chips
+    coming soon
     ```
   </TabsContent>
   <TabsContent value="manual">
@@ -34,65 +34,37 @@ description: Animated filter chips with spring physics and smooth layout transit
     npm install framer-motion
     ```
 
-    2. Copy the component code from [filter-chips.tsx](https://github.com/ezDecode/skie-ui/blob/main/registry/new-york/ui/filter-chips.tsx)
+    2. Create `components/ui/filter-chips.tsx` and add the following code:
 
-    3. Add it to your project at `components/ui/filter-chips.tsx`
+    <SourceCode name="filter-chips" />
   </TabsContent>
 </Tabs>
 
-## Usage
+## Interactions
 
-```tsx
-import { useState } from "react";
-import { FilterChips } from "@/components/ui/filter-chips";
-
-type Category = "all" | "design" | "development";
-
-export function MyComponent() {
-  const [active, setActive] = useState<Category>("all");
-
-  const filters = [
-    { value: "all" as Category, label: "All" },
-    { value: "design" as Category, label: "Design" },
-    { value: "development" as Category, label: "Development" },
-  ];
-
-  return (
-    <FilterChips
-      filters={filters}
-      activeFilter={active}
-      onFilterChange={setActive}
-      variant="default"
-    />
-  );
-}
-```
+| Trigger | Action |
+|---------|--------|
+| Click Chip | Active indicator animates to clicked chip |
+| Hover | Chip background lightens |
+| Focus | Keyboard accessible with Tab |
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `filters` | `Array<{value: T, label: string}>` | - | Array of filter options |
+| `filters` | `Array<{value, label}>` | - | Array of filter options |
 | `activeFilter` | `T` | - | Currently active filter value |
 | `onFilterChange` | `(value: T) => void` | - | Callback when filter changes |
-| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"default"` | Visual style variant |
-| `mode` | `"link" \| "button"` | `"button"` | Render as links or buttons |
-| `className` | `string` | - | Additional CSS classes |
+| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"pill"` | Visual style variant |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Chip size |
 
 ## Variants
 
-- **default** — Filled background style
+- **default** — Filled background style with rounded corners
 - **outline** — Border style with transparent background
-- **ghost** — Minimal style, no background
-- **pill** — Rounded pill shape
+- **ghost** — Minimal style, background on hover only
+- **pill** — Fully rounded pill shape
 
-## Animation Configuration
+## Dependencies
 
-The component uses spring physics for smooth transitions:
-
-```tsx
-const spring = {
-  stiffness: 500,
-  damping: 35
-};
-```
+- `framer-motion` - For shared layout animations

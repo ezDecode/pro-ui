@@ -67,20 +67,17 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<QueryProvider>
-						{/* Navbar with grid line below */}
-						<div className="screen-line-after">
-							<NavbarWrapper />
-						</div>
+						{/* Navbar - handles its own grid lines */}
+						<NavbarWrapper />
 						{/* Main content area with grid container for consistent alignment */}
-						<div className="w-full">
-							<div className="mx-auto max-w-3xl px-4 border-x border-edge min-h-[calc(100vh-4rem)]">
+						<main className="max-w-screen overflow-x-hidden px-2">
+							<div className="mx-auto max-w-3xl border-x border-edge min-h-[calc(100vh-4rem)] px-4">
 								{children}
 							</div>
-						</div>
+						</main>
 					</QueryProvider>
 				</ThemeProvider>
 			</body>
 		</html>
 	);
 }
-

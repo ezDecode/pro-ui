@@ -10,6 +10,8 @@ interface GridSeparatorProps {
     className?: string;
     /** Height of the separator in Tailwind units (default: h-10) */
     size?: "sm" | "md" | "lg" | "xl";
+    /** Whether to show the diagonal pattern (default: true) */
+    showPattern?: boolean;
 }
 
 const sizeClasses = {
@@ -19,17 +21,14 @@ const sizeClasses = {
     xl: "h-24",
 };
 
-export function GridSeparator({ className, size = "md" }: GridSeparatorProps) {
+export function GridSeparator({ className, size = "md", showPattern = true }: GridSeparatorProps) {
     return (
         <div
             data-slot="grid-separator"
             className={cn(
                 "relative flex w-full border-x border-edge",
                 sizeClasses[size],
-                // Diagonal stripe pattern
-                "before:absolute before:-left-[100vw] before:-z-1 before:w-[200vw] before:inset-y-0",
-                "before:bg-[repeating-linear-gradient(315deg,var(--edge)_0,var(--edge)_1px,transparent_0,transparent_50%)]",
-                "before:bg-[length:10px_10px]",
+                showPattern && "grid-pattern-stripe",
                 className
             )}
         />
