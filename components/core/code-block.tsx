@@ -25,18 +25,18 @@ export function CodeBlock({
   }, [raw, children]);
 
   return (
-    <div className="group relative">
+    <div className="group relative my-4 overflow-hidden rounded-xl border border-border/10 bg-zinc-100 dark:bg-zinc-800">
       <pre
         ref={preRef}
         className={cn(
-          "overflow-x-auto rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 font-mono text-sm border-none outline-none ring-0 scrollbar-hide",
+          "overflow-x-auto p-5 font-mono text-sm leading-relaxed scrollbar-hide",
           className
         )}
         {...props}
       >
         {children}
       </pre>
-      <div className="absolute right-4 top-4 opacity-0 transition-opacity group-hover:opacity-100">
+      <div className="absolute right-3 top-3 opacity-0 transition-opacity group-hover:opacity-100">
         <CopyButton value={textContent} />
       </div>
     </div>

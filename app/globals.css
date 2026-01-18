@@ -121,6 +121,7 @@
 	* {
 		@apply border-border outline-ring/50;
 	}
+
 	body {
 		@apply bg-background text-foreground;
 	}
@@ -174,7 +175,146 @@
 	}
 }
 
+/* -------------------------------------------------------------------------- */
+/* DOCS TYPOGRAPHY & STYLING (from sky.txt design system)                     */
+/* -------------------------------------------------------------------------- */
+@layer utilities {
+
+	/* Documentation typography styles - 20px (1.25rem) consistent */
+	.docs-h3 {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		@apply font-medium tracking-tight mt-10 mb-4 text-foreground;
+	}
+
+	.docs-p {
+		font-size: 1.25rem;
+		line-height: 1.75;
+		@apply text-muted-foreground mb-4;
+	}
+
+	.docs-ul {
+		@apply my-4 space-y-3 list-none p-0;
+	}
+
+	/* List items with hyphen prefix - matching sky.txt design */
+	.docs-li {
+		font-size: 1.25rem;
+		line-height: 1.75;
+		@apply text-muted-foreground relative pl-6;
+	}
+
+	.docs-li::before {
+		content: "-";
+		@apply absolute left-0 top-0 text-muted-foreground/60 font-medium;
+	}
+
+	/* Article wrapper for MDX content */
+	.docs-article {
+		font-size: 1.25rem;
+		line-height: 1.75;
+		@apply mt-8;
+	}
+
+	.docs-article p,
+	.docs-article li,
+	.docs-article td {
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	/* Code wrapper styling */
+	.docs-code-wrapper {
+		@apply relative my-4 overflow-hidden rounded-xl border border-border/10 bg-zinc-800;
+	}
+
+	.docs-copy-button {
+		@apply absolute right-3 top-3 flex size-8 items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer;
+	}
+
+	/* Props Table - clean design matching sky.txt */
+	.docs-props-table {
+		@apply w-full text-left border-collapse my-8;
+	}
+
+	.docs-props-table tbody {
+		@apply divide-y-0;
+	}
+
+	.docs-props-table tr {
+		@apply border-foreground/10 border-t last:border-b;
+	}
+
+	.docs-props-table td {
+		@apply py-4 align-top;
+	}
+
+	.docs-props-table td:first-child {
+		@apply pr-4 w-1/4;
+	}
+
+	/* Prop name badge styling */
+	.docs-prop-name {
+		@apply inline-flex items-center gap-1.5 font-mono text-sm font-medium text-foreground bg-muted/60 px-2.5 py-1 rounded-md border border-border/10;
+	}
+
+	.docs-prop-description {
+		@apply text-base text-muted-foreground leading-relaxed;
+	}
+
+	/* Interactions Table - matching sky.txt design */
+	.docs-interactions-table {
+		@apply w-full;
+	}
+
+	.docs-interactions-table tr {
+		@apply border-foreground/10 h-12 border-t tracking-tight last:border-b;
+	}
+
+	.docs-interactions-table td:first-child {
+		@apply w-1/4;
+	}
+
+	.docs-interactions-table td:last-child {
+		@apply text-lg text-muted-foreground;
+	}
+
+	/* License/Credits section with hyphen lists */
+	.docs-license-list {
+		@apply space-y-2 list-none p-0;
+	}
+
+	.docs-license-item {
+		@apply text-lg text-muted-foreground flex items-start gap-2;
+	}
+
+	.docs-license-item::before {
+		content: "-";
+		@apply text-muted-foreground/60 font-medium shrink-0;
+	}
+
+	/* Dependencies badges */
+	.docs-dependency-badge {
+		@apply bg-muted hover:bg-muted/80 flex h-9 w-fit cursor-pointer items-center gap-2 rounded-xl px-3 text-xs font-mono transition-all duration-300 border border-border/5;
+	}
+
+	/* Section spacing */
+	.docs-section {
+		@apply mb-12;
+	}
+
+	.docs-section-lg {
+		@apply mb-14;
+	}
+
+	/* Steps styling (plain) */
+	.docs-step-plain {
+		@apply space-y-4;
+	}
+}
+
 @layer base {
+
 	code[data-theme],
 	code[data-theme] span {
 		color: var(--shiki-light);
@@ -201,11 +341,15 @@ table {
 }
 
 ::selection {
-	background-color: black; /* Changes the background of the selected text */
-	color: white; /* Changes the color of the selected text */
+	background-color: black;
+	/* Changes the background of the selected text */
+	color: white;
+	/* Changes the color of the selected text */
 }
 
 html.dark ::selection {
-	background-color: white; /* Changes the background of the selected text */
-	color: black; /* Changes the color of the selected text */
+	background-color: white;
+	/* Changes the background of the selected text */
+	color: black;
+	/* Changes the color of the selected text */
 }

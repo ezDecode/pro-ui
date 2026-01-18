@@ -8,6 +8,9 @@ import { Download01Icon, HugeiconsIcon } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { ComponentPreviewTooltip } from "@/registry/new-york/ui/component-preview-tooltip";
+import { PropsTable, PropItem } from "@/components/mdx/PropsTable";
+import { Steps, Step } from "@/components/mdx/Steps";
+import { Callout } from "@/components/mdx/Callout";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
@@ -21,10 +24,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		TabsContent,
 		TabsList,
 		TabsTrigger,
+		// MDX Documentation Components
+		PropsTable,
+		PropItem,
+		Steps,
+		Step,
+		Callout,
 		h1: ({ className, ...props }) => (
 			<h1
 				className={cn(
-					"mt-2 scroll-m-20 text-3xl font-bold tracking-tight",
+					"mt-2 scroll-m-20 text-3xl font-semibold tracking-tight text-foreground",
 					className,
 				)}
 				{...props}
@@ -33,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h2: ({ className, ...props }) => (
 			<h2
 				className={cn(
-					"mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0",
+					"mt-12 scroll-m-20 pb-2 text-xl font-medium tracking-tight text-foreground first:mt-0",
 					className,
 				)}
 				{...props}
@@ -42,7 +51,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h3: ({ className, ...props }) => (
 			<h3
 				className={cn(
-					"mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+					"mt-10 scroll-m-20 text-lg font-medium tracking-tight text-foreground mb-4",
 					className,
 				)}
 				{...props}
@@ -83,18 +92,33 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		),
 		p: ({ className, ...props }) => (
 			<p
-				className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+				className={cn(
+					"text-base leading-relaxed text-muted-foreground [&:not(:first-child)]:mt-4 mb-4",
+					className,
+				)}
 				{...props}
 			/>
 		),
 		ul: ({ className, ...props }) => (
-			<ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+			<ul
+				className={cn("my-4 space-y-3 list-none p-0", className)}
+				{...props}
+			/>
 		),
 		ol: ({ className, ...props }) => (
-			<ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+			<ol
+				className={cn("my-4 space-y-3 list-none p-0 counter-reset-[item]", className)}
+				{...props}
+			/>
 		),
 		li: ({ className, ...props }) => (
-			<li className={cn("mt-2", className)} {...props} />
+			<li
+				className={cn(
+					"text-base leading-relaxed text-muted-foreground relative pl-6 before:content-['-'] before:absolute before:left-0 before:top-0 before:text-muted-foreground/60 before:font-medium",
+					className,
+				)}
+				{...props}
+			/>
 		),
 		blockquote: ({ className, ...props }) => (
 			<blockquote
@@ -115,20 +139,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		),
 		hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
 		table: ({ className, ...props }) => (
-			<div className="w-full overflow-y-auto">
-				<table className={cn("w-full", className)} {...props} />
+			<div className="w-full overflow-y-auto my-8">
+				<table className={cn("w-full text-left border-collapse", className)} {...props} />
 			</div>
 		),
 		tr: ({ className, ...props }) => (
 			<tr
-				className={cn("m-0 border-t p-0 even:bg-muted", className)}
+				className={cn("border-foreground/10 border-t last:border-b", className)}
 				{...props}
 			/>
 		),
 		th: ({ className, ...props }) => (
 			<th
 				className={cn(
-					"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+					"py-3 pr-4 text-left font-medium text-foreground [&[align=center]]:text-center [&[align=right]]:text-right",
 					className,
 				)}
 				{...props}
@@ -137,7 +161,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		td: ({ className, ...props }) => (
 			<td
 				className={cn(
-					"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+					"py-4 text-left text-muted-foreground [&[align=center]]:text-center [&[align=right]]:text-right",
 					className,
 				)}
 				{...props}

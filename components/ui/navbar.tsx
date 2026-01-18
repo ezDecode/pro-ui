@@ -71,22 +71,6 @@ export function Navbar({ navigation }: NavbarProps) {
                       </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href="/docs/components"
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          "bg-transparent hover:bg-transparent focus:bg-transparent",
-                          pathname?.startsWith("/docs/components")
-                            ? "text-foreground"
-                            : "text-foreground/60"
-                        )}
-                      >
-                        Components
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
                 </>
               )}
             </NavigationMenuList>
