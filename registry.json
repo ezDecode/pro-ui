@@ -4,23 +4,6 @@
 	"homepage": "https://skie.dev",
 	"items": [
 		{
-			"name": "adaptive-tooltip",
-			"type": "registry:ui",
-			"title": "Adaptive Tooltip",
-			"description": "Intelligent tooltip system that adapts to user intent with confidence-based delays and smooth animations.",
-			"dependencies": [
-				"framer-motion",
-				"animejs",
-				"clsx"
-			],
-			"files": [
-				{
-					"path": "registry/new-york/ui/adaptive-tooltip.tsx",
-					"type": "registry:ui"
-				}
-			]
-		},
-		{
 			"name": "filter-chips",
 			"type": "registry:ui",
 			"title": "Filter Chips",

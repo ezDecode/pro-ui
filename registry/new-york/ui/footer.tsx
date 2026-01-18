@@ -137,11 +137,7 @@ export function Footer({ navigation = [] }: FooterProps) {
                 ))
               ) : (
                 <>
-                  <li>
-                    <Link href="/docs/components/adaptive-tooltip" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      Adaptive Tooltip
-                    </Link>
-                  </li>
+
                   <li>
                     <Link href="/docs/components/filter-chips" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       Filter Chips
