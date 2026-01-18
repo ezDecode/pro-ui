@@ -1,6 +1,7 @@
 import { InspirationsSection } from "@/components/core/inspirations-section";
 import { ArrowRight02Icon, HugeiconsIcon } from "@/components/icons";
 import { GitHub } from "@/components/icons/github";
+import { GridSeparator } from "@/components/ui/grid-separator";
 import { Footer } from "@/registry/new-york/ui/footer";
 import { getNavigation } from "@/lib/navigation";
 import { generateSEO, generateSoftwareSchema } from "@/lib/seo";
@@ -37,77 +38,90 @@ export default function Home() {
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: json schema
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
 			/>
-			{/* Home page: Match navbar width (52rem) */}
-			<div className="mx-auto max-w-[52rem]">
-				{/* Center content column */}
-				<section className="flex flex-col gap-5 py-8 md:py-16 lg:py-24">
-					<Image
-						src={"/media/img_logo.png"}
-						alt="Skie Logo"
-						width={150}
-						height={150}
-						className="aspect-auto"
-					/>
 
-					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
-						Greetings from
-						<br />
-						<span className="text-muted-foreground">
-							Solo developer building motion interactions.
-						</span>
-					</h1>
+			{/* Hero Section with breathing space */}
+			<section className="screen-line-after py-12 md:py-20 lg:py-28">
+				<Image
+					src={"/media/img_logo.png"}
+					alt="Skie Logo"
+					width={150}
+					height={150}
+					className="aspect-auto"
+				/>
 
-					{/* Polished Intro Paragraph */}
-					<p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-						A laboratory for refined components, motion experiments, and interactions.
-						We recreate the best design animations on the web to make them accessible
-						and open-source for all designers. If you&apos;re building modern interfaces,
-						these tools will be invaluable. Available as free, open-source, and select premium assets.
-					</p>
+				<h1 className="mt-8 text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
+					Greetings from
+					<br />
+					<span className="text-muted-foreground">
+						Solo developer building motion interactions.
+					</span>
+				</h1>
 
-					<div className="flex flex-wrap items-center justify-start gap-3 py-2">
-						<Link href="/docs">
-							<RaisedButton
-								size="default"
-								color="#FDAC16"
-								className="flex items-center"
-							>
-								Browse components
-								<HugeiconsIcon icon={ArrowRight02Icon} size={16} />
-							</RaisedButton>
-						</Link>
-						<Link
-							href="https://github.com/ezDecode"
-							target="_blank"
-							rel="noreferrer"
+				{/* Polished Intro Paragraph */}
+				<p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base max-w-2xl">
+					A laboratory for refined components, motion experiments, and interactions.
+					We recreate the best design animations on the web to make them accessible
+					and open-source for all designers. If you&apos;re building modern interfaces,
+					these tools will be invaluable. Available as free, open-source, and select premium assets.
+				</p>
+
+				<div className="flex flex-wrap items-center justify-start gap-3 mt-8">
+					<Link href="/docs">
+						<RaisedButton
+							size="default"
+							color="#FDAC16"
+							className="flex items-center"
 						>
-							<RaisedButton size="icon" color="#3b3b3b" className="rounded-lg">
-								<GitHub className="h-6 w-6" />
-							</RaisedButton>
-						</Link>
-					</div>
+							Browse components
+							<HugeiconsIcon icon={ArrowRight02Icon} size={16} />
+						</RaisedButton>
+					</Link>
+					<Link
+						href="https://github.com/ezDecode"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<RaisedButton size="icon" color="#3b3b3b" className="rounded-lg">
+							<GitHub className="h-6 w-6" />
+						</RaisedButton>
+					</Link>
+				</div>
+			</section>
 
-					{/* Context Section */}
-					<div className="space-y-4 mt-8">
-						<div className="space-y-3 text-[15px] text-muted-foreground leading-relaxed">
-							<p>
-								Basically, I wanted a place to store high-quality motion components that don&apos;t suck to implement.
-								I find cool interactions on the web, break them down, and rebuild them here so they are actually usable.
-							</p>
-							<p>
-								It&apos;s all built with Radix and Tailwind—the stack I use in production. No bloat, just code you can copy.
-								Open source helped me get here, so this is just me giving back.
-								Check the <Link href="/docs" className="text-foreground underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground transition-all">documentation</Link> and grab whatever you need.
-							</p>
-						</div>
-					</div>
+			{/* Separator with diagonal pattern */}
+			<GridSeparator size="lg" />
 
-					{/* Inspirations Section - Auto-populated from lib/inspirations.ts */}
-					<InspirationsSection className="mt-6 mb-12" />
+			{/* About Section */}
+			<section className="screen-line-after py-12 md:py-16">
+				<div className="space-y-4 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
+					<p>
+						Basically, I wanted a place to store high-quality motion components that don&apos;t suck to implement.
+						I find cool interactions on the web, break them down, and rebuild them here so they are actually usable.
+					</p>
+					<p>
+						It&apos;s all built with Radix and Tailwind—the stack I use in production. No bloat, just code you can copy.
+						Open source helped me get here, so this is just me giving back.
+						Check the <Link href="/docs" className="text-foreground underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground transition-all">documentation</Link> and grab whatever you need.
+					</p>
+				</div>
+			</section>
 
-					<Footer navigation={navigation} />
-				</section>
-			</div>
+			{/* Separator */}
+			<GridSeparator size="md" />
+
+			{/* Inspirations Section */}
+			<section className="screen-line-after py-10 md:py-14">
+				<InspirationsSection className="mb-0" />
+			</section>
+
+			{/* Separator */}
+			<GridSeparator size="lg" />
+
+			{/* Footer Section */}
+			<section className="py-10 md:py-14">
+				<Footer navigation={navigation} />
+			</section>
 		</>
 	);
 }
+

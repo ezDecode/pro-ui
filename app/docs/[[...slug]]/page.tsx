@@ -200,7 +200,6 @@ export default async function DocPage({ params }: PageProps) {
 				title={metadata.title}
 				description={metadata.description}
 				logo={metadata.logo as string | undefined}
-				toc={toc}
 				markdownContent={content}
 				breadcrumbs={uiBreadcrumbs}
 			>

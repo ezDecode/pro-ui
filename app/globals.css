@@ -6,6 +6,7 @@
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+	--color-edge: var(--edge);
 	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 	--font-serif:
 		var(--font-instrument-serif), ui-serif, Georgia, Cambria, "Times New Roman",
@@ -68,6 +69,8 @@
 	--border: oklch(0.922 0 0);
 	--input: oklch(0.922 0 0);
 	--ring: oklch(0.708 0 0);
+	/* Edge color for grid lines - subtle blend between border and background */
+	--edge: color-mix(in oklab, var(--border) 70%, var(--background));
 	--chart-1: oklch(0.646 0.222 41.116);
 	--chart-2: oklch(0.6 0.118 184.704);
 	--chart-3: oklch(0.398 0.07 227.392);
@@ -102,6 +105,8 @@
 	--border: oklch(1 0 0 / 0.1);
 	--input: oklch(1 0 0 / 0.15);
 	--ring: oklch(0.556 0 0);
+	/* Edge color for grid lines - visible in dark mode */
+	--edge: oklch(0.3 0 0);
 	--chart-1: oklch(0.488 0.243 264.376);
 	--chart-2: oklch(0.696 0.17 162.48);
 	--chart-3: oklch(0.769 0.188 70.08);
@@ -220,6 +225,54 @@
 		background: transparent !important;
 		padding: 0;
 	}
+}
+
+/* -------------------------------------------------------------------------- */
+/* GRID LINE UTILITIES (inspired by chanhdai.com)                              */
+/* -------------------------------------------------------------------------- */
+
+/* Horizontal line spanning full viewport - appears ABOVE element */
+.screen-line-before {
+	position: relative;
+}
+
+.screen-line-before::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100vw;
+	z-index: -1;
+	height: 1px;
+	width: 200vw;
+	background-color: var(--edge);
+}
+
+/* Horizontal line spanning full viewport - appears BELOW element */
+.screen-line-after {
+	position: relative;
+}
+
+.screen-line-after::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: -100vw;
+	z-index: -1;
+	height: 1px;
+	width: 200vw;
+	background-color: var(--edge);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
 }
 
 /* -------------------------------------------------------------------------- */

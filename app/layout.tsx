@@ -59,7 +59,7 @@ export default function RootLayout({
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
 				/>
 			</head>
-			<body className="min-h-screen bg-background font-sans antialiased">
+			<body className="min-h-screen bg-background font-sans antialiased overflow-x-hidden">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -67,10 +67,15 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<QueryProvider>
-						<NavbarWrapper />
-						{/* Base container - pages control their own width */}
-						<div className="w-full px-4">
-							{children}
+						{/* Navbar with grid line below */}
+						<div className="screen-line-after">
+							<NavbarWrapper />
+						</div>
+						{/* Main content area with grid container for consistent alignment */}
+						<div className="w-full">
+							<div className="mx-auto max-w-3xl px-4 border-x border-edge min-h-[calc(100vh-4rem)]">
+								{children}
+							</div>
 						</div>
 					</QueryProvider>
 				</ThemeProvider>
@@ -78,3 +83,4 @@ export default function RootLayout({
 		</html>
 	);
 }
+
