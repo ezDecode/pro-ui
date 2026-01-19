@@ -62,7 +62,7 @@ export function DocPageLayout({
 					</div>
 				)}
 				<div className="space-y-2">
-					<div className="flex items-center justify-between">
+					<div className="flex items-start justify-between gap-4">
 						<h1 className="scroll-m-20 text-3xl font-medium tracking-tight">
 							{title}
 						</h1>

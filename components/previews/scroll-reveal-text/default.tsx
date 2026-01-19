@@ -63,20 +63,20 @@ export default function ScrollRevealTextDemo() {
   return (
     <div
       ref={containerRef}
-      className="h-[400px] w-full bg-[#0d0d0d] rounded-lg relative overflow-hidden cursor-ns-resize"
+      className="h-[220px] w-full bg-[#0d0d0d] relative overflow-hidden cursor-ns-resize"
       // @ts-ignore
-      style={{ "--reveal-view-height": "400px" }}
+      style={{ "--reveal-view-height": "220px" }}
     >
       <ScrollRevealTextFramer
-        phrase="Beneath yesterday's dreams, possibility whispers to those who listen. Every moment becomes a doorway, inviting us to discover what we never knew we were searching for. Buy pro to get the code!!"
-        highlightWords={["possibility", "doorway", "invitation"]}
+        phrase="Every moment is a doorway, waiting to be discovered."
+        highlightWords={["doorway", "discovered"]}
         primaryColor="#ff6b00"
-        containerHeight="400px"
+        containerHeight="220px"
         manualScrollProgress={progress}
       />
 
-      {/* Optional: Visual Scroll Indicator (Subtle) */}
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 h-24 w-1 bg-white/10 rounded-full">
+      {/* Scroll Indicator */}
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 h-16 w-1 bg-white/10 rounded-full">
         <motion.div
           className="w-full bg-white/50 rounded-full"
           style={{

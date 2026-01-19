@@ -52,7 +52,7 @@ export function PageNavigationClient({
 
 	if (position === "top") {
 		return (
-			<div className="flex items-center justify-end mb-6 gap-2">
+			<div className="flex items-center gap-2 shrink-0">
 				<Button
 					variant="secondary"
 					size="sm"

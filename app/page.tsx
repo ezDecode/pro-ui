@@ -73,7 +73,7 @@ export default function Home() {
 
 				{/* CTA Buttons */}
 				<div className="flex flex-wrap items-center justify-start gap-2 mt-5">
-					<Link href="/docs">
+					<Link href="/browse">
 						<BadgeButton
 							size="default"
 							color="#FDAC16"

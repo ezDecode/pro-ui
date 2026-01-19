@@ -117,7 +117,7 @@ export const mainNav = [
 	},
 	{
 		title: "Components",
-		href: "/docs/components",
+		href: "/browse",
 	},
 ];
 

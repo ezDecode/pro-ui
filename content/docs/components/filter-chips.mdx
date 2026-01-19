@@ -79,26 +79,6 @@ dependencies={[
   }
 ]} />
 
-## Usage
-
-```tsx
-import { FilterChips } from "@/components/ui/filter-chips";
-
-const [active, setActive] = useState("all");
-
-const filters = [
-  { value: "all", label: "All" },
-  { value: "design", label: "Design" },
-  { value: "dev", label: "Development" },
-];
-
-<FilterChips
-  filters={filters}
-  activeFilter={active}
-  onFilterChange={setActive}
-  variant="pill"
-/>
-```
 
 <CreditNote credits={[
   { url: "https://motion.dev", label: "Motion", color: "#6b21a8" }
