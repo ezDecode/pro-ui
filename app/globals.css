@@ -358,7 +358,7 @@
 			transparent 0,
 			transparent 50%);
 	background-size: var(--grid-unit) var(--grid-unit);
-	opacity: 0.08;
+	opacity: 0.25;
 }
 
 /* Dashed/broken line style for section boundaries */

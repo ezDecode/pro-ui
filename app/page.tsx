@@ -56,10 +56,10 @@ export default function Home() {
 
 				{/* Heading */}
 				<h1 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
-					Greetings from
+					Hey there!!
 					<br />
 					<span className="text-muted-foreground">
-						Solo developer building motion interactions.
+						I'm a solo dev building motion interactions.
 					</span>
 				</h1>
 
