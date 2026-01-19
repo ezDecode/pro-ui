@@ -28,6 +28,7 @@ export function hexToRgb(
 ): { r: number; g: number; b: number } | null {
 	const normalizedHex = hex.charAt(0) === "#" ? hex.substring(1) : hex;
 
+	// 3-character hex (e.g., #RGB)
 	if (normalizedHex.length === 3) {
 		const r = parseInt(normalizedHex.charAt(0) + normalizedHex.charAt(0), 16);
 		const g = parseInt(normalizedHex.charAt(1) + normalizedHex.charAt(1), 16);
@@ -35,6 +36,16 @@ export function hexToRgb(
 		return { r, g, b };
 	}
 
+	// 4-character hex with alpha (e.g., #RGBA)
+	if (normalizedHex.length === 4) {
+		const r = parseInt(normalizedHex.charAt(0) + normalizedHex.charAt(0), 16);
+		const g = parseInt(normalizedHex.charAt(1) + normalizedHex.charAt(1), 16);
+		const b = parseInt(normalizedHex.charAt(2) + normalizedHex.charAt(2), 16);
+		// Alpha is ignored for RGB output
+		return { r, g, b };
+	}
+
+	// 6-character hex (e.g., #RRGGBB)
 	if (normalizedHex.length === 6) {
 		const r = parseInt(normalizedHex.substring(0, 2), 16);
 		const g = parseInt(normalizedHex.substring(2, 4), 16);
@@ -42,28 +53,20 @@ export function hexToRgb(
 		return { r, g, b };
 	}
 
-	if (normalizedHex !== hex) {
-		try {
-			const tempElement = document.createElement("div");
-			tempElement.style.color = hex;
-			document.body.appendChild(tempElement);
+	// 8-character hex with alpha (e.g., #RRGGBBAA)
+	if (normalizedHex.length === 8) {
+		const r = parseInt(normalizedHex.substring(0, 2), 16);
+		const g = parseInt(normalizedHex.substring(2, 4), 16);
+		const b = parseInt(normalizedHex.substring(4, 6), 16);
+		// Alpha is ignored for RGB output
+		return { r, g, b };
+	}
 
-			const computedColor = window.getComputedStyle(tempElement).color;
-			document.body.removeChild(tempElement);
-
-			const rgbMatch = computedColor.match(
-				/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/,
-			);
-			if (rgbMatch) {
-				return {
-					r: parseInt(rgbMatch[1], 10),
-					g: parseInt(rgbMatch[2], 10),
-					b: parseInt(rgbMatch[3], 10),
-				};
-			}
-		} catch (e) {
-			console.error("Error processing color name:", e);
-		}
+	// Try to match CSS named colors from our map
+	const lowerColor = hex.toLowerCase().trim();
+	if (CSS_COLOR_NAMES[lowerColor]) {
+		const [r, g, b] = CSS_COLOR_NAMES[lowerColor];
+		return { r, g, b };
 	}
 
 	return null;
@@ -90,41 +93,12 @@ export function getContrastColor(luminance: number): string {
 export function parseColor(
 	color: string,
 ): { r: number; g: number; b: number } | null {
+	// First try hex parsing (handles #RGB, #RGBA, #RRGGBB, #RRGGBBAA, and named colors)
 	const hexResult = hexToRgb(color);
 	if (hexResult) return hexResult;
 
 	try {
-		if (typeof document !== "undefined") {
-			const tempElement = document.createElement("div");
-			tempElement.style.color = color;
-			document.body.appendChild(tempElement);
-
-			const computedColor = window.getComputedStyle(tempElement).color;
-			document.body.removeChild(tempElement);
-
-			const rgbMatch = computedColor.match(
-				/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/,
-			);
-			if (rgbMatch) {
-				return {
-					r: parseInt(rgbMatch[1], 10),
-					g: parseInt(rgbMatch[2], 10),
-					b: parseInt(rgbMatch[3], 10),
-				};
-			}
-		} else {
-			const colorMap: Record<string, { r: number; g: number; b: number }> = {};
-			for (const [name, rgb] of Object.entries(CSS_COLOR_NAMES)) {
-				const [r, g, b] = rgb;
-				colorMap[name.toLowerCase()] = { r, g, b };
-			}
-
-			const normalizedColorName = color.toLowerCase().trim();
-			if (colorMap[normalizedColorName]) {
-				return colorMap[normalizedColorName];
-			}
-		}
-
+		// Try to match rgb/rgba format: rgb(r, g, b) or rgba(r, g, b, a)
 		const rgbDirectMatch = color.match(
 			/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/,
 		);
@@ -136,6 +110,7 @@ export function parseColor(
 			};
 		}
 
+		// Try to match hsl/hsla format: hsl(h, s%, l%) or hsla(h, s%, l%, a)
 		const hslMatch = color.match(
 			/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%(?:,\s*[\d.]+)?\)/,
 		);

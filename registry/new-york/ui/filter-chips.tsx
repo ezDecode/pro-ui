@@ -5,7 +5,7 @@
  * Animated filter chips with spring physics and smooth layout transitions.
  * 
  * @shoutout Motion (https://motion.dev) - For shared layout animations
- * @author Skie (https://skie.dev)
+ * @author ezDecode(https://github.com/ezDecode)
  */
 
 import React, { useCallback, useMemo } from "react";

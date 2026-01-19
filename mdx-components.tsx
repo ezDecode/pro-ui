@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { CodeBlock } from "@/components/core/code-block";
 import { ComponentPreview } from "@/components/core/component-preview";
+import { DependencyPills } from "@/components/core/dependency-pills";
 import { InstallCommand } from "@/components/core/install-command";
 import { Shoutout } from "@/components/core/shoutout";
 import { SourceCode } from "@/components/core/source-code";
@@ -17,6 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
 		Link,
 		ComponentPreview,
+		DependencyPills,
 		Shoutout,
 
 		InstallCommand,

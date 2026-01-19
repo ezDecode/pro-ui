@@ -6,7 +6,7 @@
  * 
  * @shoutout nvg8.io - The original inspiration for this scroll reveal effect
  * @shoutout Motion (https://motion.dev) - Animation library for scroll-based transitions
- * @author Skie (https://skie.dev)
+ * @author ezDecode(https://github.com/ezDecode)
  */
 
 import { useRef, useMemo, useState, useEffect } from "react";

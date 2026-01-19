@@ -150,8 +150,8 @@ function CommandItem({
 		<CommandPrimitive.Item
 			data-slot="command-item"
 			className={cn(
-				// Selection: lighter orange shade instead of white
-				"data-[selected=true]:bg-orange-500/15 data-[selected=true]:text-foreground",
+				// Selection: soft orange shade
+				"data-[selected=true]:bg-zinc-400/10 data-[selected=true]:text-foreground",
 				"[&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}

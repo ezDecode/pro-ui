@@ -5,7 +5,7 @@
  * A button with magnetic cursor attraction powered by GSAP animations.
  * 
  * @shoutout GSAP (https://gsap.com) - The animation library powering this effect
- * @author Skie (https://skie.dev)
+ * @author ezDecode(https://github.com/ezDecode)
  */
 
 import React, { useRef, useEffect } from 'react';

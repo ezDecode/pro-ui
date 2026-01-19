@@ -512,15 +512,15 @@ table {
 }
 
 ::selection {
-	background-color: black;
-	/* Changes the background of the selected text */
-	color: white;
-	/* Changes the color of the selected text */
+	background-color: oklch(0.92 0.05 60);
+	/* Soft peachy orange */
+	color: oklch(0.25 0.05 50);
+	/* Dark warm brown for contrast */
 }
 
 html.dark ::selection {
-	background-color: white;
-	/* Changes the background of the selected text */
-	color: black;
-	/* Changes the color of the selected text */
+	background-color: oklch(67.597% 0.13338 58.189);
+	/* Warm amber-orange */
+	color: oklch(0.98 0.02 80);
+	/* Light cream for contrast */
 }
