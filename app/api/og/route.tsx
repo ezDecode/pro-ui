@@ -5,13 +5,13 @@ import { siteConfig } from "@/lib/siteConfig";
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-// Shared styles
+// Shared styles - Using Geist font
 const styles = {
 	title: {
 		display: "flex",
 		fontSize: "72px",
 		fontWeight: 600,
-		fontFamily: "Inter",
+		fontFamily: "Geist",
 		color: "#000000",
 		letterSpacing: "-0.03em",
 		lineHeight: 1.1,
@@ -20,7 +20,7 @@ const styles = {
 		display: "flex",
 		fontSize: "64px",
 		fontWeight: 600,
-		fontFamily: "Inter",
+		fontFamily: "Geist",
 		color: "#6b7280",
 	},
 } as const;
@@ -62,12 +62,13 @@ export async function GET(request: Request) {
 	const iconUrl = `${baseUrl}/media/img_logo.png`;
 
 	try {
+		// Load Geist font weights from Google Fonts
 		const [fontRegular, fontMedium, fontSemiBold, fontBold] = await Promise.all(
 			[
-				loadGoogleFont("Inter", 400),
-				loadGoogleFont("Inter", 500),
-				loadGoogleFont("Inter", 600),
-				loadGoogleFont("Inter", 700),
+				loadGoogleFont("Geist", 400),
+				loadGoogleFont("Geist", 500),
+				loadGoogleFont("Geist", 600),
+				loadGoogleFont("Geist", 700),
 			],
 		);
 
@@ -84,10 +85,10 @@ export async function GET(request: Request) {
 				width: WIDTH,
 				height: HEIGHT,
 				fonts: [
-					{ name: "Inter", data: fontRegular, weight: 400, style: "normal" },
-					{ name: "Inter", data: fontMedium, weight: 500, style: "normal" },
-					{ name: "Inter", data: fontSemiBold, weight: 600, style: "normal" },
-					{ name: "Inter", data: fontBold, weight: 700, style: "normal" },
+					{ name: "Geist", data: fontRegular, weight: 400, style: "normal" },
+					{ name: "Geist", data: fontMedium, weight: 500, style: "normal" },
+					{ name: "Geist", data: fontSemiBold, weight: 600, style: "normal" },
+					{ name: "Geist", data: fontBold, weight: 700, style: "normal" },
 				],
 			},
 		);
@@ -171,3 +172,4 @@ function Title({ children }: { children: React.ReactNode }) {
 function Subtitle({ children }: { children: React.ReactNode }) {
 	return <div style={styles.subtitle}>{children}</div>;
 }
+

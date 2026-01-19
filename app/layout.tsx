@@ -1,9 +1,5 @@
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
+import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
-import { Instrument_Serif } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -15,10 +11,17 @@ import {
 	generateWebsiteSchema,
 } from "@/lib/seo";
 
-const instrumentSerif = Instrument_Serif({
-	weight: "400",
+// Geist Sans - Primary font
+const geistSans = Geist({
 	subsets: ["latin"],
-	variable: "--font-instrument-serif",
+	variable: "--font-geist-sans",
+	display: "swap",
+});
+
+// Geist Mono - Monospace font
+const geistMono = Geist_Mono({
+	subsets: ["latin"],
+	variable: "--font-geist-mono",
 	display: "swap",
 });
 
@@ -39,7 +42,7 @@ export default function RootLayout({
 		<html
 			lang="en"
 			suppressHydrationWarning
-			className={instrumentSerif.variable}
+			className={`${geistSans.variable} ${geistMono.variable}`}
 		>
 			<head>
 				<link
@@ -59,7 +62,7 @@ export default function RootLayout({
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
 				/>
 			</head>
-			<body className="min-h-screen bg-background font-sans antialiased overflow-x-hidden">
+			<body className={`${geistSans.className} min-h-screen bg-background antialiased overflow-x-hidden`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -81,3 +84,6 @@ export default function RootLayout({
 		</html>
 	);
 }
+
+
+

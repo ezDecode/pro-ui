@@ -9,20 +9,12 @@
  * @author ezDecode(https://github.com/ezDecode)
  */
 
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect, memo } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
 // ===========================================================================
 // TYPES
 // ===========================================================================
-
-export interface ScrollRevealTextProps {
-    phrase: string;
-    title?: string;
-    highlightWords?: string[];
-    primaryColor?: string;
-    config?: AnimationConfig;
-}
 
 export interface AnimationConfig {
     leadCount?: number;
@@ -100,7 +92,11 @@ const isWordHighlighted = (word: string, highlightWords: string[]): boolean => {
 // ANIMATED WORD COMPONENT
 // ===========================================================================
 
-function AnimatedWord({
+/**
+ * Memoized animated word component for optimal performance.
+ * Each word gets its own animation timing based on scroll position.
+ */
+const AnimatedWord = memo(function AnimatedWord({
     word, index, totalWords, scrollProgress, isHighlighted, primaryColor, leadCount,
 }: AnimatedWordProps) {
     const rgb = hexToRgb(primaryColor);
@@ -175,7 +171,7 @@ function AnimatedWord({
             />
         </span>
     );
-}
+});
 
 // ===========================================================================
 // MAIN COMPONENT
@@ -245,12 +241,11 @@ export function ScrollRevealTextFramer({
             ref={containerRef}
             className={`w-full max-w-[100vw] relative isolate ${className}`}
             style={{
-                // @ts-ignore
                 "--reveal-view-height": typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight,
                 height: `calc(${totalScrollDistance}px + var(--reveal-view-height))`,
                 backgroundColor: 'var(--color-bg, #0d0d0d)',
                 color: 'var(--color-text, #fff)'
-            }}
+            } as React.CSSProperties}
         >
             <div
                 className="w-full flex items-start justify-center sticky top-0 z-[1] pt-12 md:pt-32"

@@ -29,7 +29,6 @@ export const metadata = generateSEO({
 
 export default function Home() {
 	const softwareSchema = generateSoftwareSchema();
-
 	const navigation = getNavigation();
 
 	return (
@@ -41,40 +40,39 @@ export default function Home() {
 			/>
 
 			{/* Hero Section */}
-			<section className="screen-line-after py-8 md:py-12 lg:py-16">
-				<div className="relative mb-4 w-fit screen-line-before screen-line-after border-r border-edge">
+			<section className="py-8 md:py-12 lg:py-16">
+				{/* Logo */}
+				<div className="relative mb-6 w-fit border-r border-edge">
 					<div className="grid-pattern-subtle">
 						<Image
 							src={"/media/img_logo.png"}
 							alt="Skie Logo"
-							width={150}
-							height={150}
+							width={140}
+							height={140}
 							className="aspect-auto"
 						/>
 					</div>
 				</div>
-				<GridSeparator size="sm" />
 
-				<div className="screen-line-before screen-line-after py-2">
-					<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl">
-						Greetings from
-						<br />
-						<span className="text-muted-foreground">
-							Solo developer building motion interactions.
-						</span>
-					</h1>
-				</div>
-				<GridSeparator size="sm" />
+				{/* Heading */}
+				<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+					Greetings from
+					<br />
+					<span className="text-muted-foreground">
+						Solo developer building motion interactions.
+					</span>
+				</h1>
 
-				{/* Polished Intro Paragraph */}
-				<p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base max-w-2xl">
+				{/* Intro Paragraph */}
+				<p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base max-w-2xl">
 					A laboratory for refined components, motion experiments, and interactions.
 					We recreate the best design animations on the web to make them accessible
 					and open-source for all designers. If you&apos;re building modern interfaces,
-					these tools will be invaluable. Available as free, open-source, and select premium assets.
+					these tools will be invaluable.
 				</p>
 
-				<div className="flex flex-wrap items-center justify-start gap-2 mt-3">
+				{/* CTA Buttons */}
+				<div className="flex flex-wrap items-center justify-start gap-2 mt-5">
 					<Link href="/docs">
 						<BadgeButton
 							size="default"
@@ -97,18 +95,15 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Separator with diagonal pattern */}
-			<GridSeparator size="sm" />
+			<GridSeparator size="md" />
 
 			{/* About Section */}
-			<section className="screen-line-after py-6 md:py-10">
-				<div className="space-y-3 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
-					<div className="screen-line-before screen-line-after py-2 mb-2">
-						<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-4xl text-foreground">
-							Know me
-						</h1>
-					</div>
-					<GridSeparator size="sm" />
+			<section className="py-8 md:py-10">
+				<h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl text-foreground mb-4">
+					Know me
+				</h2>
+
+				<div className="space-y-4 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
 					<p>
 						Basically, I wanted a place to store high-quality motion components that don&apos;t suck to implement.
 						I find cool interactions on the web, break them down, and rebuild them here so they are actually usable.
@@ -121,42 +116,35 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Separator */}
-			<GridSeparator size="md" />
+			<GridSeparator size="sm" />
 
 			{/* Dependencies Section */}
-			<section className="screen-line-after py-6 md:py-8">
-				<div className="screen-line-before screen-line-after py-2 mb-2">
-					<h2 className="text-xl font-semibold tracking-tight">Built with</h2>
-				</div>
-				<GridSeparator size="sm" />
-				<DependencyPills className="mt-4"
+			<section className="py-6 md:py-8">
+				<h2 className="text-xl font-semibold tracking-tight mb-4">Built with</h2>
+				<DependencyPills
 					dependencies={[
 						{ name: "React", url: "https://react.dev", color: "#1e3a5f" },
 						{ name: "Motion", url: "https://motion.dev", color: "#302727ff" },
 						{ name: "GSAP", url: "https://gsap.com", color: "#0e3a0e" },
-						{ name: "Radix UI", url: "https://radix-ui.com", color: "#1a1a2e" },
+						{ name: "Radix UI", url: "https://radix-ui.com", color: "#33338aff" },
 						{ name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
 					]}
 				/>
 			</section>
 
-			{/* Separator */}
-			<GridSeparator size="md" />
+			<GridSeparator size="sm" />
 
 			{/* Inspirations Section */}
-			<section className="screen-line-after py-6 md:py-8">
+			<section className="py-6 md:py-8">
 				<InspirationsSection className="mb-0" />
 			</section>
 
-			{/* Separator */}
-			<GridSeparator size="sm" />
-
 			{/* Footer Section */}
-			<section className="py-6 md:py-8">
+			<section className="pt-8 pb-6">
 				<Footer navigation={navigation} />
 			</section>
 		</>
 	);
 }
+
 

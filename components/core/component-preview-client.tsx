@@ -51,15 +51,19 @@ export function ComponentPreviewClient({
 	const [activeTab, setActiveTab] = React.useState<TabValue>("preview");
 	const [html, setHtml] = React.useState("");
 	const [copied, setCopied] = React.useState(false);
+	const [isLoadingCode, setIsLoadingCode] = React.useState(true);
 
 	React.useEffect(() => {
+		setIsLoadingCode(true);
 		codeToHtml(code, {
 			lang: "tsx",
 			themes: {
 				light: "github-light",
 				dark: "github-dark",
 			},
-		}).then(setHtml);
+		})
+			.then(setHtml)
+			.finally(() => setIsLoadingCode(false));
 	}, [code]);
 
 	const handleCopy = async () => {
@@ -178,12 +182,21 @@ export function ComponentPreviewClient({
 
 				{activeTab === "code" && (
 					<div className="max-h-[500px] overflow-auto">
-						<pre className="p-4 text-sm font-mono overflow-x-auto">
-							<code
-								data-theme
-								dangerouslySetInnerHTML={{ __html: html }}
-							/>
-						</pre>
+						{isLoadingCode ? (
+							<div className="p-4 space-y-2">
+								<div className="h-4 bg-muted/50 rounded animate-pulse w-3/4" />
+								<div className="h-4 bg-muted/50 rounded animate-pulse w-1/2" />
+								<div className="h-4 bg-muted/50 rounded animate-pulse w-5/6" />
+								<div className="h-4 bg-muted/50 rounded animate-pulse w-2/3" />
+							</div>
+						) : (
+							<pre className="p-4 text-sm font-mono overflow-x-auto">
+								<code
+									data-theme
+									dangerouslySetInnerHTML={{ __html: html }}
+								/>
+							</pre>
+						)}
 					</div>
 				)}
 			</div>
