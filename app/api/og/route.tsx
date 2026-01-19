@@ -124,7 +124,7 @@ function getSubtitle(type: OGImageType): string {
 		case "component":
 			return "Skie Component";
 		default:
-			return "skie.dev";
+			return "ui.creativesky.me";
 	}
 }
 

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry.json",
 	"name": "skie",
-	"homepage": "https://skie.dev",
+	"homepage": "https://ui.creativesky.me",
 	"items": [
 		{
 			"name": "badge-button",

@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	...generateSEO(),
-	metadataBase: new URL("https://skie.dev"),
+	metadataBase: new URL("https://ui.creativesky.me"),
 };
 
 export default function RootLayout({
