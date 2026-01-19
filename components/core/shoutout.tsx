@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { BadgeButton } from "@/registry/new-york/ui/badge-button";
 import { Favicon } from "./favicon";
 
 interface ShoutoutProps {
@@ -17,11 +17,11 @@ interface ShoutoutProps {
 }
 
 /**
- * Shoutout - Premium "Credit Chip" using RaisedButton styling
+ * Shoutout - Premium "Credit Chip" using BadgeButton styling
  * Uses smart Favicon component with SVG > PNG > Google API fallback
  * 
  * Features:
- * - Uses the signature RaisedButton 3D effect
+ * - Uses the signature BadgeButton 3D effect
  * - Auto-fetched favicon with multi-format support
  * - Consistent with the rest of the UI library
  * 
@@ -43,7 +43,7 @@ export function Shoutout({ url, label, description, color = "#27272a", className
             rel="noopener noreferrer"
             className={`inline-block ${className ?? ""}`}
         >
-            <RaisedButton
+            <BadgeButton
                 size="sm"
                 color={color}
                 className="rounded-full pl-1.5 pr-3 py-1 h-auto gap-2 font-normal"
@@ -89,7 +89,7 @@ export function Shoutout({ url, label, description, color = "#27272a", className
                         strokeLinejoin="round"
                     />
                 </svg>
-            </RaisedButton>
+            </BadgeButton>
         </Link>
     );
 }

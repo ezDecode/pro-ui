@@ -4,6 +4,19 @@
 	"homepage": "https://skie.dev",
 	"items": [
 		{
+			"name": "badge-button",
+			"type": "registry:ui",
+			"title": "Badge Button",
+			"description": "Clean, minimal 3D button with Microsoft Fluent-style dual shadow system - inner shine and soft drop shadow.",
+			"dependencies": [],
+			"files": [
+				{
+					"path": "registry/new-york/ui/badge-button.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
 			"name": "filter-chips",
 			"type": "registry:ui",
 			"title": "Filter Chips",

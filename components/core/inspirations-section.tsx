@@ -2,7 +2,7 @@
 
 import { inspirations, type Inspiration } from "@/lib/inspirations";
 import { cn } from "@/lib/utils";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { BadgeButton } from "@/registry/new-york/ui/badge-button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,7 +34,7 @@ function InspirationPill({ inspiration }: InspirationPillProps) {
             target="_blank"
             rel="noopener noreferrer"
         >
-            <RaisedButton
+            <BadgeButton
                 size="sm"
                 color="#FDAC16"
                 className="rounded-full px-2 pr-3 gap-2"
@@ -50,7 +50,7 @@ function InspirationPill({ inspiration }: InspirationPillProps) {
                 />
                 <span>{inspiration.name}</span>
                 {/* <XIcon className="opacity-60" /> */}
-            </RaisedButton>
+            </BadgeButton>
         </Link>
     );
 }

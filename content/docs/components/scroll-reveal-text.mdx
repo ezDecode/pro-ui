@@ -1,6 +1,6 @@
 ---
 title: Scroll Reveal Text
-description: Scroll-locked text reveal animation with word-by-word glassmorphic effects.
+description: Scroll-locked text reveal with word-by-word glassmorphic effects.
 ---
 
 <ComponentPreview 
@@ -8,37 +8,24 @@ name="scroll-reveal-text/default"
 dependencies={[
   { name: "React", url: "https://react.dev", color: "#1e3a5f" },
   { name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
-  { name: "Motion", url: "https://motion.dev", color: "#1a1a1a" }
+  { name: "Motion", url: "https://motion.dev", color: "#302727ff" }
 ]}
 />
 
-<div className="mt-4 flex flex-col gap-2">
-  <Shoutout url="https://nvg8.io" label="nvg8.io" description="Original Inspiration" />
-</div>
 
 ## Features
 
 - **Scroll-locked animation** — Text reveals as you scroll
 - **Word-by-word reveal** — Each word animates individually
-- **Glassmorphic pills** — Subtle background effects on words
-- **Responsive** — Optimized for mobile and desktop
+- **Glassmorphic pills** — Subtle blur effects on emerging words
 - **Highlight support** — Emphasize specific words with custom colors
-- **Custom font** — Uses PolySans for distinctive typography
 
 ## Installation
 
-<Tabs defaultValue="automatic" className="mt-4">
+<Tabs defaultValue="manual" className="mt-4">
   <TabsList>
-    <TabsTrigger value="automatic">Automatic</TabsTrigger>
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
-  <TabsContent value="automatic">
-    Run the following command to add the component to your project:
-
-    ```bash
-    coming soon
-    ```
-  </TabsContent>
   <TabsContent value="manual">
     1. Install dependencies:
 
@@ -46,7 +33,7 @@ dependencies={[
     npm install framer-motion
     ```
 
-    2. Create `components/ui/scroll-reveal-text.tsx` and add the following code:
+    2. Add the component:
 
     <SourceCode name="scroll-reveal-text" />
   </TabsContent>
@@ -56,26 +43,41 @@ dependencies={[
 
 | Trigger | Action |
 |---------|--------|
-| Scroll Down | Words reveal progressively with glassmorphic pill effect |
+| Scroll Down | Words reveal progressively with pill effect |
 | Scroll Up | Animation reverses, words fade back |
 | Reach End | All text fully visible |
 
 ## Animation Phases
 
-Each word goes through three phases:
+Each word transitions through three phases:
 
-1. **Emergence** (0-15%) — Pill box fades in with scale
-2. **Focus** (15-60%) — Pill reaches full opacity
-3. **Reveal** (60-100%) — Text fades in, pill fades out
+1. **Emergence** (0-15%) — Pill fades in with scale
+2. **Focus** (15-60%) — Pill at full opacity  
+3. **Reveal** (60-100%) — Text fades in, pill dissolves
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `phrase` | `string` | - | The text content to reveal (required) |
-| `title` | `string` | - | Optional heading above the text |
-| `highlightWords` | `string[]` | `[]` | Words to highlight with primary color |
-| `primaryColor` | `string` | `"#ff6b00"` | Color for highlighted words (hex) |
+| `phrase` | `string` | - | Text content to reveal (required) |
+| `title` | `string` | - | Optional heading above text |
+| `highlightWords` | `string[]` | `[]` | Words to highlight |
+| `primaryColor` | `string` | `"#ff6b00"` | Highlight color |
 | `scrollContainerRef` | `RefObject` | - | Custom scroll container |
 
+## Usage
 
+```tsx
+import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
+
+<ScrollRevealText
+  phrase="Your text content goes here and reveals word by word as you scroll."
+  highlightWords={["reveals", "scroll"]}
+  primaryColor="#FDAC16"
+/>
+```
+
+<CreditNote credits={[
+  { url: "https://motion.dev", label: "Motion", color: "#9c9200ff" },
+  { url: "https://nvg8.io", label: "nvg8.io", color: "#1a1a1a" }
+]} />

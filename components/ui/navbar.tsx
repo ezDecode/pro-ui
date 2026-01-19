@@ -26,7 +26,7 @@ export function Navbar({ navigation }: NavbarProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background px-2 py-3">
+    <header className="sticky top-0 z-50 w-full bg-background px-2">
       {/* Outer container with grid lines */}
       <div
         className={cn(

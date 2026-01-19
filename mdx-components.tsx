@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { PropsTable, PropItem } from "@/components/mdx/PropsTable";
 import { Steps, Step } from "@/components/mdx/Steps";
 import { Callout } from "@/components/mdx/Callout";
+import { CreditNote } from "@/components/mdx/CreditNote";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
@@ -20,6 +21,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		ComponentPreview,
 		DependencyPills,
 		Shoutout,
+		CreditNote,
 
 		InstallCommand,
 		SourceCode,

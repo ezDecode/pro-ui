@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { BadgeButton } from "@/registry/new-york/ui/badge-button";
 import { Favicon } from "./favicon";
 
 interface Dependency {
@@ -40,7 +40,7 @@ export function DependencyPills({ dependencies, className }: DependencyPillsProp
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <RaisedButton
+                    <BadgeButton
                         size="sm"
                         color={dep.color ?? "#27272a"}
                         className="rounded-full px-3 py-1.5 h-auto gap-2 font-medium text-xs"
@@ -52,7 +52,7 @@ export function DependencyPills({ dependencies, className }: DependencyPillsProp
                             className="shrink-0"
                         />
                         {dep.name}
-                    </RaisedButton>
+                    </BadgeButton>
                 </Link>
             ))}
         </div>

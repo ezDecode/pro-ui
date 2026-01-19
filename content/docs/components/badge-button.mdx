@@ -1,0 +1,71 @@
+---
+title: Badge Button
+description: Clean, minimal 3D button with Fluent-style dual shadow system.
+---
+
+<ComponentPreview 
+name="badge-button/default" 
+dependencies={[
+  { name: "React", url: "https://react.dev", color: "#1e3a5f" },
+  { name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" }
+]}
+/>
+
+## Features
+
+- **Dual shadow system** — Inner shine + soft drop shadow for subtle 3D depth
+- **Dynamic colors** — Pass any color, auto-calculates text contrast
+- **Multiple sizes** — sm, default, lg, icon variants
+- **Zero dependencies** — Pure React + Tailwind
+
+## Installation
+
+<Tabs defaultValue="manual" className="mt-4">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    1. Copy the `colorUtils.ts` to your `lib/utils/` folder
+    2. Add the component:
+
+    <SourceCode name="badge-button" />
+  </TabsContent>
+</Tabs>
+
+## Interactions
+
+| Trigger | Action |
+|---------|--------|
+| Click | Scale down feedback (0.97) |
+| Hover | Cursor pointer, subtle state change |
+| Focus | Ring outline for accessibility |
+| Disabled | 50% opacity, no pointer events |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `color` | `string` | - | Background color (hex, rgb, named) |
+| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Size variant |
+| `disabled` | `boolean` | `false` | Disables the button |
+| `className` | `string` | - | Additional classes |
+
+## Usage
+
+```tsx
+import { BadgeButton } from "@/components/ui/badge-button";
+
+// With color
+<BadgeButton color="#FDAC16">Primary</BadgeButton>
+
+// Different sizes
+<BadgeButton size="sm" color="#1e3a5f">Small</BadgeButton>
+<BadgeButton size="lg" color="#0e3a0e">Large</BadgeButton>
+
+// Neutral (no color)
+<BadgeButton>Neutral</BadgeButton>
+```
+
+<CreditNote credits={[
+  { url: "https://ui.shadcn.com", label: "shadcn/ui", color: "#18181b" }
+]} />

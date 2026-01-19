@@ -12,7 +12,7 @@ import {
 } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import type { NavSection } from "@/types/nav-item";
-import { Footer } from "@/registry/new-york/ui/footer";
+import { Footer } from "@/components/core/footer";
 
 interface PageNavigationClientProps {
 	position?: "top" | "bottom";
@@ -121,7 +121,7 @@ export function PageNavigationClient({
 					</Button>
 				)}
 			</div>
-			<Footer />
+			<Footer navigation={navigation} />
 		</div>
 	);
 }

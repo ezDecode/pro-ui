@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import * as React from "react";
 import { HugeiconsIcon, Moon02Icon, Sun03Icon } from "@/components/icons";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { BadgeButton } from "@/registry/new-york/ui/badge-button";
 
 export function ThemeToggle() {
 	const { theme, setTheme } = useTheme();
@@ -20,7 +20,7 @@ export function ThemeToggle() {
 	const isDark = theme === "dark";
 
 	return (
-		<RaisedButton
+		<BadgeButton
 			aria-label="Toggle theme"
 			onClick={() => setTheme(isDark ? "light" : "dark")}
 			className="h-9 w-9 rounded-lg"
@@ -32,6 +32,6 @@ export function ThemeToggle() {
 			) : (
 				<HugeiconsIcon icon={Sun03Icon} size={18} />
 			)}
-		</RaisedButton>
+		</BadgeButton>
 	);
 }

@@ -3,10 +3,10 @@ import { InspirationsSection } from "@/components/core/inspirations-section";
 import { ArrowRight02Icon, HugeiconsIcon } from "@/components/icons";
 import { GitHubIcon } from "@/components/icons/social-icons";
 import { GridSeparator } from "@/components/ui/grid-separator";
-import { Footer } from "@/registry/new-york/ui/footer";
+import { Footer } from "@/components/core/footer";
 import { getNavigation } from "@/lib/navigation";
 import { generateSEO, generateSoftwareSchema } from "@/lib/seo";
-import { RaisedButton } from "@/registry/new-york/ui/raised-button";
+import { BadgeButton } from "@/registry/new-york/ui/badge-button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -76,23 +76,23 @@ export default function Home() {
 
 				<div className="flex flex-wrap items-center justify-start gap-2 mt-3">
 					<Link href="/docs">
-						<RaisedButton
+						<BadgeButton
 							size="default"
 							color="#FDAC16"
 							className="flex items-center"
 						>
 							Browse components
 							<HugeiconsIcon icon={ArrowRight02Icon} size={16} />
-						</RaisedButton>
+						</BadgeButton>
 					</Link>
 					<Link
 						href="https://github.com/ezDecode"
 						target="_blank"
 						rel="noreferrer"
 					>
-						<RaisedButton size="icon" color="#3b3b3b" className="rounded-lg">
+						<BadgeButton size="icon" color="#3b3b3b" className="rounded-lg">
 							<GitHubIcon className="h-6 w-6" />
-						</RaisedButton>
+						</BadgeButton>
 					</Link>
 				</div>
 			</section>
@@ -130,7 +130,7 @@ export default function Home() {
 					<h2 className="text-xl font-semibold tracking-tight">Built with</h2>
 				</div>
 				<GridSeparator size="sm" />
-				<DependencyPills
+				<DependencyPills className="mt-4"
 					dependencies={[
 						{ name: "React", url: "https://react.dev", color: "#1e3a5f" },
 						{ name: "Motion", url: "https://motion.dev", color: "#302727ff" },

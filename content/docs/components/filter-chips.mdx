@@ -15,25 +15,16 @@ dependencies={[
 ## Features
 
 - **Shared layout transitions** — Smooth background animation between chips
-- **Spring physics** — Natural, bouncy animations
-- **Multiple variants** — default, outline, ghost, pill
-- **Type-safe** — TypeScript generics for filter types
-- **Flexible** — Works as links or buttons
+- **Spring physics** — Natural, bouncy selection feedback
+- **Multiple variants** — default, outline, ghost, pill styles
+- **Type-safe** — Full TypeScript generics support
 
 ## Installation
 
-<Tabs defaultValue="automatic" className="mt-4">
+<Tabs defaultValue="manual" className="mt-4">
   <TabsList>
-    <TabsTrigger value="automatic">Automatic</TabsTrigger>
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
-  <TabsContent value="automatic">
-    Run the following command to add the component to your project:
-
-    ```bash
-    coming soon
-    ```
-  </TabsContent>
   <TabsContent value="manual">
     1. Install dependencies:
 
@@ -41,7 +32,7 @@ dependencies={[
     npm install framer-motion
     ```
 
-    2. Create `components/ui/filter-chips.tsx` and add the following code:
+    2. Add the component:
 
     <SourceCode name="filter-chips" />
   </TabsContent>
@@ -52,8 +43,9 @@ dependencies={[
 | Trigger | Action |
 |---------|--------|
 | Click Chip | Active indicator animates to clicked chip |
-| Hover | Chip background lightens |
-| Focus | Keyboard accessible with Tab |
+| Hover | Background lightens subtly |
+| Focus | Keyboard accessible with Tab navigation |
+| Enter/Space | Activates focused chip |
 
 ## Props
 
@@ -62,14 +54,30 @@ dependencies={[
 | `filters` | `Array<{value, label}>` | - | Array of filter options |
 | `activeFilter` | `T` | - | Currently active filter value |
 | `onFilterChange` | `(value: T) => void` | - | Callback when filter changes |
-| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"pill"` | Visual style variant |
+| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"pill"` | Visual style |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | Chip size |
 
-## Variants
+## Usage
 
-- **default** — Filled background style with rounded corners
-- **outline** — Border style with transparent background
-- **ghost** — Minimal style, background on hover only
-- **pill** — Fully rounded pill shape
+```tsx
+import { FilterChips } from "@/components/ui/filter-chips";
 
+const [active, setActive] = useState("all");
 
+const filters = [
+  { value: "all", label: "All" },
+  { value: "design", label: "Design" },
+  { value: "dev", label: "Development" },
+];
+
+<FilterChips
+  filters={filters}
+  activeFilter={active}
+  onFilterChange={setActive}
+  variant="pill"
+/>
+```
+
+<CreditNote credits={[
+  { url: "https://motion.dev", label: "Motion", color: "#6b21a8" }
+]} />
