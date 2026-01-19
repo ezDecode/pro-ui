@@ -71,7 +71,7 @@ export function InspirationsSection({
     return (
         <section className={cn("space-y-4", className)}>
             <div className="space-y-1">
-                <h2 className="text-lg font-semibold">{title}</h2>
+                <h2 className="text-lg font-medium">{title}</h2>
                 {description && (
                     <p className="text-sm text-muted-foreground leading-relaxed">
                         {description}

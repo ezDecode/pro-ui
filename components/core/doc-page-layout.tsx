@@ -63,7 +63,7 @@ export function DocPageLayout({
 				)}
 				<div className="space-y-2">
 					<div className="flex items-center justify-between">
-						<h1 className="scroll-m-20 text-3xl font-semibold tracking-tight">
+						<h1 className="scroll-m-20 text-3xl font-medium tracking-tight">
 							{title}
 						</h1>
 						<PageNavigation

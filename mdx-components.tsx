@@ -39,7 +39,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h1: ({ className, ...props }) => (
 			<h1
 				className={cn(
-					"mt-2 scroll-m-20 text-3xl font-semibold tracking-tight text-foreground",
+					"mt-2 scroll-m-20 text-3xl font-medium tracking-tight text-foreground",
 					className,
 				)}
 				{...props}
@@ -66,7 +66,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h4: ({ className, ...props }) => (
 			<h4
 				className={cn(
-					"mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+					"mt-8 scroll-m-20 text-lg font-medium tracking-tight",
 					className,
 				)}
 				{...props}
@@ -75,7 +75,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h5: ({ className, ...props }) => (
 			<h5
 				className={cn(
-					"mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+					"mt-8 scroll-m-20 text-base font-medium tracking-tight",
 					className,
 				)}
 				{...props}
@@ -84,7 +84,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		h6: ({ className, ...props }) => (
 			<h6
 				className={cn(
-					"mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+					"mt-8 scroll-m-20 text-base font-medium tracking-tight",
 					className,
 				)}
 				{...props}

@@ -66,7 +66,7 @@ export function Shoutout({ url, label, description, color = "#27272a", className
                 {/* Text Content */}
                 <span className="flex items-center gap-1.5 text-xs">
                     <span className="opacity-70">Inspired by</span>
-                    <span className="font-semibold">{label}</span>
+                    <span className="font-medium">{label}</span>
                     {description && (
                         <span className="opacity-50 hidden sm:inline">— {description}</span>
                     )}

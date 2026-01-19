@@ -36,7 +36,7 @@ export function Callout({
             {...props}
         >
             {title && (
-                <div className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground/90">
+                <div className="flex items-center gap-2.5 font-medium tracking-tight text-foreground/90">
                     <div
                         className={cn("rounded-lg p-1", {
                             "bg-foreground/5": type === "default",

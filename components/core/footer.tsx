@@ -58,11 +58,11 @@ export function Footer({ navigation = [] }: FooterProps) {
               <div
                 key={section.title}
                 className={`space-y-4 ${sectionIndex === navigation.length - 1 && navigation.length > 2
-                    ? "col-span-2 sm:col-span-1"
-                    : ""
+                  ? "col-span-2 sm:col-span-1"
+                  : ""
                   }`}
               >
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-sm font-medium text-foreground">
                   {section.title}
                 </h3>
                 <ul className="space-y-2.5">

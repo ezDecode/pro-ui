@@ -136,46 +136,32 @@
 	}
 
 	body {
-		@apply bg-background text-foreground;
-		/* Geist font optimizations - tighter letter-spacing */
-		letter-spacing: -0.015em;
+		@apply bg-background text-foreground tracking-tight;
+		/* Geist font optimizations */
 		font-feature-settings: "ss01" on, "ss02" on, "cv01" on;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
 	}
 
-	/* Headings - extra tight letter spacing for Geist */
+	/* Headings - use tracking-tight for consistency */
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		letter-spacing: -0.032em;
+		@apply tracking-tight;
 		font-feature-settings: "ss01" on, "cv01" on;
 	}
 
-	h1 {
-		letter-spacing: -0.04em;
-	}
-
-	h2 {
-		letter-spacing: -0.035em;
-	}
-
-	h3,
-	h4 {
-		letter-spacing: -0.028em;
-	}
-
-	/* Paragraphs - tighter for modern feel */
+	/* Paragraphs */
 	p {
-		letter-spacing: -0.015em;
+		@apply tracking-tight;
 		line-height: 1.6;
 	}
 
-	/* Small text - slightly open for clarity */
+	/* Small text - normal tracking for clarity */
 	small,
 	.text-xs,
 	.text-sm {
@@ -188,7 +174,7 @@
 	kbd,
 	samp {
 		font-feature-settings: "ss01" on, "ss02" on, "liga" on;
-		letter-spacing: -0.01em;
+		@apply tracking-tight;
 	}
 
 	/* Modern minimal scrollbar styling */

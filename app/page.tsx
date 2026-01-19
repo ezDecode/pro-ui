@@ -55,7 +55,7 @@ export default function Home() {
 				</div>
 
 				{/* Heading */}
-				<h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+				<h1 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
 					Greetings from
 					<br />
 					<span className="text-muted-foreground">
@@ -99,7 +99,7 @@ export default function Home() {
 
 			{/* About Section */}
 			<section className="py-8 md:py-10">
-				<h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl text-foreground mb-4">
+				<h2 className="text-2xl font-medium leading-tight tracking-tight md:text-3xl text-foreground mb-4">
 					Know me
 				</h2>
 
@@ -120,7 +120,7 @@ export default function Home() {
 
 			{/* Dependencies Section */}
 			<section className="py-6 md:py-8">
-				<h2 className="text-xl font-semibold tracking-tight mb-4">Built with</h2>
+				<h2 className="text-xl font-medium tracking-tight mb-4">Built with</h2>
 				<DependencyPills
 					dependencies={[
 						{ name: "React", url: "https://react.dev", color: "#1e3a5f" },
