@@ -25,7 +25,7 @@ interface CreditNoteProps {
  */
 export function CreditNote({ credits = [] }: CreditNoteProps) {
     return (
-        <div className="mt-12 pt-6 border-t border-border/50 text-sm text-muted-foreground leading-relaxed">
+        <div className="mt-12 pt-6 border-t border-border/50 text-md text-muted-foreground leading-relaxed">
             <p className="mb-4">
                 <strong className="text-foreground/70">Note:</strong> Most components here are recreations of the best out there. I don't claim to be the original creator. This is my attempt to reverse-engineer, replicate, and often add a few extra features. I've tried to credit everyone, but if I missed something, let me know.
             </p>

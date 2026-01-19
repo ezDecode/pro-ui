@@ -57,13 +57,35 @@ Each word transitions through three phases:
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `phrase` | `string` | - | Text content to reveal (required) |
-| `title` | `string` | - | Optional heading above text |
-| `highlightWords` | `string[]` | `[]` | Words to highlight |
-| `primaryColor` | `string` | `"#ff6b00"` | Highlight color |
-| `scrollContainerRef` | `RefObject` | - | Custom scroll container |
+<PropsTable props={[
+  {
+    name: "phrase",
+    type: "string",
+    description: "Text content to reveal."
+  },
+  {
+    name: "title",
+    type: "string",
+    description: "Optional heading above text."
+  },
+  {
+    name: "highlightWords",
+    type: "string[]",
+    defaultValue: "[]",
+    description: "Words to highlight."
+  },
+  {
+    name: "primaryColor",
+    type: "string",
+    defaultValue: '"#ff6b00"',
+    description: "Highlight color."
+  },
+  {
+    name: "scrollContainerRef",
+    type: "RefObject",
+    description: "Custom scroll container ref."
+  }
+]} />
 
 ## Usage
 

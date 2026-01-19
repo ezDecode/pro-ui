@@ -19,7 +19,7 @@ export function Callout({
     return (
         <div
             className={cn(
-                "my-6 flex flex-col gap-2 rounded-2xl border p-5 text-[14px] leading-relaxed transition-all shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.3)] backdrop-blur-[6px]",
+                "my-6 flex flex-col gap-2 rounded-2xl border p-5 text-base leading-relaxed transition-all shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.3)] backdrop-blur-[6px]",
                 {
                     "border-foreground/10": type === "default",
                     "border-blue-500/20 bg-blue-500/5 text-blue-900 dark:text-blue-200":

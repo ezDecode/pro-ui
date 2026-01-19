@@ -43,12 +43,25 @@ dependencies={[
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `color` | `string` | - | Background color (hex, rgb, named) |
-| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Size variant |
-| `disabled` | `boolean` | `false` | Disables the button |
-| `className` | `string` | - | Additional classes |
+<PropsTable props={[
+  {
+    name: "color",
+    type: "string",
+    description: "Background color (hex, rgb, named)."
+  },
+  {
+    name: "size",
+    type: '"sm" | "default" | "lg" | "icon"',
+    defaultValue: '"default"',
+    description: "Size variant of the button."
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disables interaction and applies opacity."
+  }
+]} />
 
 ## Usage
 

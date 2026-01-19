@@ -39,7 +39,7 @@ export function CodeBlock({
       >
         {children}
       </pre>
-      <div className="absolute right-3 top-3 opacity-0 transition-opacity group-hover:opacity-100">
+      <div className="absolute right-3 top-3">
         <CopyButton value={textContent} />
       </div>
     </div>

@@ -49,13 +49,29 @@ dependencies={[
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | - | Button content |
-| `onClick` | `() => void` | - | Click handler |
-| `hoverVariant` | `"light" \| "dark" \| "custom"` | `"light"` | Hover style |
-| `customColor` | `string` | - | Color for custom variant |
-| `className` | `string` | - | Additional classes |
+<PropsTable props={[
+  {
+    name: "children",
+    type: "ReactNode",
+    description: "Button content."
+  },
+  {
+    name: "onClick",
+    type: "() => void",
+    description: "Click handler function."
+  },
+  {
+    name: "hoverVariant",
+    type: '"light" | "dark" | "custom"',
+    defaultValue: '"light"',
+    description: "Hover style variant."
+  },
+  {
+    name: "customColor",
+    type: "string",
+    description: "Color for custom hover variant."
+  }
+]} />
 
 ## Usage
 

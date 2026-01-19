@@ -22,7 +22,7 @@ export default function ScrollRevealTextDemo() {
     >
 
       <ScrollRevealTextFramer
-        phrase="Beneath yesterday's dreams, possibility whispers to those who listen. Every moment becomes a doorway, inviting us to discover what we never knew we were searching for."
+        phrase="Beneath yesterday's dreams, possibility whispers to those who listen. Every moment becomes a doorway, inviting us to discover what we never knew we were searching for. Buy pro to get the code!!"
         highlightWords={["possibility", "doorway", "invitation"]}
         primaryColor="#ff6b00"
         scrollContainerRef={scrollContainerRef}

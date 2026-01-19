@@ -49,13 +49,35 @@ dependencies={[
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `filters` | `Array<{value, label}>` | - | Array of filter options |
-| `activeFilter` | `T` | - | Currently active filter value |
-| `onFilterChange` | `(value: T) => void` | - | Callback when filter changes |
-| `variant` | `"default" \| "outline" \| "ghost" \| "pill"` | `"pill"` | Visual style |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Chip size |
+<PropsTable props={[
+  {
+    name: "filters",
+    type: "Array<{value, label}>",
+    description: "Array of filter options."
+  },
+  {
+    name: "activeFilter",
+    type: "T",
+    description: "Currently active filter value."
+  },
+  {
+    name: "onFilterChange",
+    type: "(value: T) => void",
+    description: "Callback when filter changes."
+  },
+  {
+    name: "variant",
+    type: '"default" | "outline" | "ghost" | "pill"',
+    defaultValue: '"pill"',
+    description: "Visual style variant."
+  },
+  {
+    name: "size",
+    type: '"sm" | "md" | "lg"',
+    defaultValue: '"md"',
+    description: "Size of the chips."
+  }
+]} />
 
 ## Usage
 

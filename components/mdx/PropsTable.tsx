@@ -38,12 +38,12 @@ export function PropsTable({ props, className }: PropsTableProps) {
                             className="border-foreground/10 border-t last:border-b group"
                         >
                             <td className="py-4 pr-4 align-top w-1/4 sm:w-1/3">
-                                <span className="inline-flex items-center gap-1.5 font-mono text-sm font-medium text-foreground bg-muted/60 px-2.5 py-1 rounded-md border border-border/10">
+                                <span className="inline-flex items-center gap-1.5 font-mono text-md font-medium text-foreground bg-muted/60 px-2.5 py-1 rounded-md border border-border/10">
                                     {prop.name}
                                 </span>
                             </td>
                             <td className="py-4 align-top">
-                                <p className="text-base text-muted-foreground leading-relaxed">
+                                <p className="text-md text-muted-foreground leading-relaxed">
                                     {prop.description}
                                 </p>
                             </td>
@@ -71,12 +71,12 @@ export function PropItem({
         <div className="my-8 border-foreground/10 border-t last:border-b py-6 group">
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-4">
                 <div className="flex flex-col gap-1">
-                    <span className="inline-flex items-center gap-1.5 font-mono text-sm font-medium text-foreground bg-muted/60 px-2.5 py-1 rounded-md border border-border/10 w-fit">
+                    <span className="inline-flex items-center gap-1.5 font-mono text-xl font-medium text-foreground bg-muted/60 px-2.5 py-1 rounded-md border border-border/10 w-fit">
                         {name}
                     </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <div className="text-base text-muted-foreground leading-relaxed">
+                    <div className="text-xl text-muted-foreground leading-relaxed">
                         {children}
                     </div>
                 </div>
