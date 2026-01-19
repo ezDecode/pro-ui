@@ -1,22 +1,45 @@
 "use client";
 
-import { ArrowDown01Icon, ArrowUp01Icon, HugeiconsIcon, PackageOpenIcon } from "@/components/icons";
+import { ArrowDown01Icon, HugeiconsIcon, PackageOpenIcon } from "@/components/icons";
 import type { ComponentInfo } from "@/lib/components";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Suspense, lazy, useMemo, useState } from "react";
+import { Suspense, lazy, memo, startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-// Preview loader with lazy loading
-function PreviewLoader({ name }: { name: string }) {
-    const Component = useMemo(() => {
-        return lazy(() => import(`@/components/previews/${name}/default`));
-    }, [name]);
+// Component cache to avoid re-importing already loaded components
+const componentCache = new Map<string, React.LazyExoticComponent<React.ComponentType<unknown>>>();
+
+// Prefetch queue to handle background loading
+const prefetchedComponents = new Set<string>();
+
+// Get or create lazy component with caching
+function getOrCreateLazyComponent(name: string) {
+    if (!componentCache.has(name)) {
+        componentCache.set(name, lazy(() => import(`@/components/previews/${name}/default`)));
+    }
+    return componentCache.get(name)!;
+}
+
+// Prefetch a component in the background
+function prefetchComponent(name: string) {
+    if (prefetchedComponents.has(name)) return;
+    prefetchedComponents.add(name);
+    // Trigger the import to cache it
+    import(`@/components/previews/${name}/default`).catch(() => {
+        // Silent fail - component will load normally when needed
+        prefetchedComponents.delete(name);
+    });
+}
+
+// Optimized Preview loader with caching
+const PreviewLoader = memo(function PreviewLoader({ name }: { name: string }) {
+    const Component = useMemo(() => getOrCreateLazyComponent(name), [name]);
 
     return (
         <Suspense
             fallback={
-                <div className="flex items-center justify-center h-full">
+                <div className="flex items-center justify-center h-full min-h-[100px]">
                     <div className="w-4 h-4 border-2 border-muted-foreground/20 border-t-foreground/50 rounded-full animate-spin" />
                 </div>
             }
@@ -24,18 +47,58 @@ function PreviewLoader({ name }: { name: string }) {
             <Component />
         </Suspense>
     );
-}
+});
 
-// Individual component item with collapsible preview
+// Individual component item with collapsible preview - optimized
 function ComponentItem({ name, title, description, href }: ComponentInfo) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const itemRef = useRef<HTMLDivElement>(null);
+
+    // Prefetch on hover (with debounce via requestIdleCallback)
+    useEffect(() => {
+        if (isHovered && !isExpanded) {
+            const id = requestIdleCallback(() => prefetchComponent(name), { timeout: 100 });
+            return () => cancelIdleCallback(id);
+        }
+    }, [isHovered, isExpanded, name]);
+
+    // Intersection observer for viewport-based prefetching
+    useEffect(() => {
+        const element = itemRef.current;
+        if (!element) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0]?.isIntersecting) {
+                    // Prefetch when component is near viewport
+                    requestIdleCallback(() => prefetchComponent(name), { timeout: 500 });
+                }
+            },
+            { rootMargin: "200px" } // Start prefetching 200px before visible
+        );
+
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [name]);
+
+    const handleToggle = useCallback(() => {
+        startTransition(() => {
+            setIsExpanded((prev) => !prev);
+        });
+    }, []);
 
     return (
-        <div className="border-b border-edge">
+        <div
+            ref={itemRef}
+            className="border-b border-edge"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             {/* Component Row - Toggle */}
             <button
                 type="button"
-                onClick={() => setIsExpanded(!isExpanded)}
+                onClick={handleToggle}
                 className={cn(
                     "w-full flex items-center gap-3 h-12 px-4",
                     "hover:bg-muted/20 transition-colors cursor-pointer",
@@ -53,7 +116,7 @@ function ComponentItem({ name, title, description, href }: ComponentInfo) {
                 </span>
                 <motion.div
                     animate={{ rotate: isExpanded ? 180 : 0 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
                 >
                     <HugeiconsIcon
                         icon={ArrowDown01Icon}
@@ -63,7 +126,7 @@ function ComponentItem({ name, title, description, href }: ComponentInfo) {
                 </motion.div>
             </button>
 
-            {/* Collapsible Preview with Motion */}
+            {/* Collapsible Preview with Motion - FASTER animation */}
             <AnimatePresence initial={false}>
                 {isExpanded && (
                     <motion.div
@@ -71,9 +134,9 @@ function ComponentItem({ name, title, description, href }: ComponentInfo) {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{
-                            duration: 0.3,
-                            ease: [0.4, 0, 0.2, 1],
-                            opacity: { duration: 0.2 }
+                            duration: 0.15, // Reduced from 0.3
+                            ease: [0.25, 0.1, 0.25, 1], // Faster ease curve
+                            opacity: { duration: 0.1, delay: 0.02 } // Show content earlier
                         }}
                         className="overflow-hidden border-t border-edge"
                     >
