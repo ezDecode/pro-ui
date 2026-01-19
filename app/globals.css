@@ -136,7 +136,7 @@
 	}
 
 	body {
-		@apply bg-background text-foreground tracking-tight;
+		@apply bg-background text-foreground tracking-tighter;
 		/* Geist font optimizations */
 		font-feature-settings: "ss01" on, "ss02" on, "cv01" on;
 		-webkit-font-smoothing: antialiased;
@@ -144,20 +144,20 @@
 		text-rendering: optimizeLegibility;
 	}
 
-	/* Headings - use tracking-tight for consistency */
+	/* Headings - use tracking-tighter for consistency */
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		@apply tracking-tight;
+		@apply tracking-tighter;
 		font-feature-settings: "ss01" on, "cv01" on;
 	}
 
 	/* Paragraphs */
 	p {
-		@apply tracking-tight;
+		@apply tracking-tighter;
 		line-height: 1.6;
 	}
 
@@ -168,13 +168,13 @@
 		letter-spacing: 0em;
 	}
 
-	/* Code/mono - Geist Mono optimizations */
+	/* Code/mono - Geist Mono with normal letter-spacing */
 	code,
 	pre,
 	kbd,
 	samp {
 		font-feature-settings: "ss01" on, "ss02" on, "liga" on;
-		@apply tracking-tight;
+		letter-spacing: 0em;
 	}
 
 	/* Modern minimal scrollbar styling */
