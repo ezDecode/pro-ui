@@ -33,6 +33,28 @@ interface AnimatedWordProps {
     leadCount: number;
 }
 
+export interface ScrollRevealTextProps {
+    /** The text content to be revealed word by word (required) */
+    phrase: string;
+    /** Optional heading displayed above the text */
+    title?: string;
+    /** Words to highlight with primary color */
+    highlightWords?: string[];
+    /** Hex color for highlighted words (e.g., "#ff6b00") */
+    primaryColor?: string;
+    /** Animation configuration overrides */
+    config?: AnimationConfig;
+    /** Optional ref to the scrollable container (useful for previews) */
+    scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
+    /** Optional height of the reveal view (default: "100vh") */
+    containerHeight?: string | number;
+    /** Optional className for the outer container */
+    className?: string;
+    /** Optional manual progress for virtual scrolling (Ghost Wheel) */
+    manualScrollProgress?: MotionValue<number>;
+}
+
+
 // ===========================================================================
 // CONFIGURATION
 // ===========================================================================
@@ -173,28 +195,10 @@ const AnimatedWord = memo(function AnimatedWord({
     );
 });
 
+
 // ===========================================================================
 // MAIN COMPONENT
 // ===========================================================================
-
-export interface ScrollRevealTextProps {
-    /** The text content to be revealed word by word (required) */
-    phrase: string;
-    /** Optional heading displayed above the text */
-    title?: string;
-    /** Words to highlight with primary color */
-    highlightWords?: string[];
-    /** Hex color for highlighted words (e.g., "#ff6b00") */
-    primaryColor?: string;
-    /** Animation configuration overrides */
-    config?: AnimationConfig;
-    /** Optional ref to the scrollable container (useful for previews) */
-    scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
-    /** Optional height of the reveal view (default: "100vh") */
-    containerHeight?: string | number;
-    /** Optional className for the outer container */
-    className?: string;
-}
 
 export function ScrollRevealTextFramer({
     phrase = "",
@@ -205,6 +209,7 @@ export function ScrollRevealTextFramer({
     scrollContainerRef,
     containerHeight = "100vh",
     className = "",
+    manualScrollProgress,
 }: ScrollRevealTextProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const words = useMemo(() => phrase.split(" "), [phrase]);
@@ -234,7 +239,8 @@ export function ScrollRevealTextFramer({
         offset: ["start start", "end end"]
     });
 
-    const smoothProgress = useSpring(scrollYProgress, springConfig);
+    const activeProgress = manualScrollProgress || scrollYProgress;
+    const smoothProgress = useSpring(activeProgress, springConfig);
 
     return (
         <div
@@ -242,13 +248,15 @@ export function ScrollRevealTextFramer({
             className={`w-full max-w-[100vw] relative isolate ${className}`}
             style={{
                 "--reveal-view-height": typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight,
-                height: `calc(${totalScrollDistance}px + var(--reveal-view-height))`,
+                height: manualScrollProgress
+                    ? "var(--reveal-view-height)"
+                    : `calc(${totalScrollDistance}px + var(--reveal-view-height))`,
                 backgroundColor: 'var(--color-bg, #0d0d0d)',
                 color: 'var(--color-text, #fff)'
             } as React.CSSProperties}
         >
             <div
-                className="w-full flex items-start justify-center sticky top-0 z-[1] pt-12 md:pt-32"
+                className="w-full flex items-center justify-center sticky top-0 z-[1]"
                 style={{
                     height: "var(--reveal-view-height)",
                     backgroundColor: 'var(--color-bg, #0d0d0d)'

@@ -19,7 +19,7 @@ export function FullscreenButton({ children }: FullscreenButtonProps) {
 						<Button
 							size="icon"
 							variant={"secondary"}
-							className="min-h-6 min-w-6 transition-opacity hover:bg-white z-20 relative"
+							className="min-h-6 min-w-6 transition-opacity z-20 relative"
 						>
 							<HugeiconsIcon icon={FullScreenIcon} size={12} />
 						</Button>
@@ -27,7 +27,7 @@ export function FullscreenButton({ children }: FullscreenButtonProps) {
 				</TooltipTrigger>
 				<TooltipContent>Open in Full Screen</TooltipContent>
 			</Tooltip>
-			<DialogContent className="max-w-[95vw] max-h-[95vh] h-[95vh] min-w-[95vw] overflow-auto">
+			<DialogContent className="max-w-[60vw] min-w-[60vw] max-h-[40vw] h-[40vw] overflow-auto">
 				<div className="flex flex-wrap items-center justify-center gap-4 w-full h-full">
 					{children}
 				</div>
