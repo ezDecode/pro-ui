@@ -48,7 +48,7 @@ export function Navbar({ navigation }: NavbarProps) {
               alt="Logo"
               width={36}
               height={36}
-              className="aspect-square"
+              className="aspect-square active:scale-[0.97]"
               priority
             />
           </Link>

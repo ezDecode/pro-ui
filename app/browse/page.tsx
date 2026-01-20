@@ -2,6 +2,7 @@ import { getComponents } from "@/lib/components";
 import { BrowseGrid } from "./browse-grid";
 import { GridSeparator } from "@/components/ui/grid-separator";
 import Link from "next/link";
+import { DependencyPills } from "@/components/core/dependency-pills";
 
 // Server component - fetches components automatically
 export default function BrowseComponentsPage() {
@@ -39,27 +40,18 @@ export default function BrowseComponentsPage() {
 
             {/* Built For Section */}
             <section className="py-6">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="font-mono text-xs">Built for</span>
-                    <Link
-                        href="https://react.dev"
-                        target="_blank"
-                        className="inline-flex items-center gap-1.5 px-2 py-1 bg-muted/30 hover:bg-muted/50 rounded text-xs font-mono transition-colors"
-                    >
-                        <i className="devicon-react-original text-[10px]" />
-                        React 19
-                    </Link>
-                    <Link
-                        href="https://tailwindcss.com"
-                        target="_blank"
-                        className="inline-flex items-center gap-1.5 px-2 py-1 bg-muted/30 hover:bg-muted/50 rounded text-xs font-mono transition-colors"
-                    >
-                        <i className="devicon-tailwindcss-original text-[10px]" />
-                        Tailwind CSS v4
-                    </Link>
-                </div>
+                <h2 className="text-xl font-medium tracking-tight mb-2">Built with</h2>
+                <DependencyPills
+                    dependencies={[
+                        { name: "React", url: "https://react.dev", color: "#1e3a5f" },
+                        { name: "Motion", url: "https://motion.dev", color: "#302727ff" },
+                        { name: "GSAP", url: "https://gsap.com", color: "#0e3a0e" },
+                        { name: "Radix UI", url: "https://radix-ui.com", color: "#33338aff" },
+                        { name: "Shadcn", url: "https://ui.shadcn.com/", color: "#1A171D" },
+                        { name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
+                    ]}
+                />
             </section>
-
             {/* Bottom Grid Separator */}
             <GridSeparator size="sm" />
 

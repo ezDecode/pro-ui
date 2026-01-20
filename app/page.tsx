@@ -127,6 +127,7 @@ export default function Home() {
 						{ name: "Motion", url: "https://motion.dev", color: "#302727ff" },
 						{ name: "GSAP", url: "https://gsap.com", color: "#0e3a0e" },
 						{ name: "Radix UI", url: "https://radix-ui.com", color: "#33338aff" },
+						{ name: "Shadcn", url: "https://ui.shadcn.com/", color: "#1A171D" },
 						{ name: "Tailwind", url: "https://tailwindcss.com", color: "#0e4a5c" },
 					]}
 				/>

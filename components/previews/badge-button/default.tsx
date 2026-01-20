@@ -15,11 +15,6 @@ export default function BadgeButtonDemo() {
                 Small
             </BadgeButton>
 
-            {/* Large size */}
-            <BadgeButton size="lg" color="#0e3a0e">
-                Large Button
-            </BadgeButton>
-
             {/* Icon button */}
             <BadgeButton size="icon" color="#3b3b3b">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
