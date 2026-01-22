@@ -137,7 +137,7 @@ export function generateOrganizationSchema() {
 		url: siteConfig.url,
 		logo: `${siteConfig.url}/logo.png`,
 		description: siteConfig.description,
-		foundingDate: "2024",
+		foundingDate: "2026",
 		sameAs: [
 			siteConfig.links.github,
 			siteConfig.links.twitter,
