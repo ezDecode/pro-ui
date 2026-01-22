@@ -14,19 +14,11 @@ export default function BrowseComponentsPage() {
             {/* Header Section */}
             <section className="py-10 md:py-14">
                 <h1 className="text-2xl font-medium tracking-tight md:text-3xl">
-                    Components
+                    Interaction Components
                 </h1>
                 <p className="mt-2 text-muted-foreground text-sm font-mono">
-                    A collection of reusable components. Click to expand preview.
+                    Some of the best interactions found from from the internet.
                 </p>
-
-                {/* Install Command */}
-                <div className="mt-6 flex items-center gap-2">
-                    <code className="text-sm text-muted-foreground font-mono">
-                        npx shadcn add{" "}
-                        <span className="text-foreground">@skie/component-name</span>
-                    </code>
-                </div>
             </section>
 
             {/* Grid Separator */}
