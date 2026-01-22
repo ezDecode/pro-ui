@@ -548,15 +548,15 @@ table {
 }
 
 ::selection {
-	background-color: oklch(0.92 0.05 60);
-	/* Soft peachy orange */
-	color: oklch(0.25 0.05 50);
-	/* Dark warm brown for contrast */
+	background-color: oklch(0.7 0.18 260);
+	/* Light blue based on #0256FE */
+	color: oklch(1 0 0);
+	/* White for contrast */
 }
 
 html.dark ::selection {
-	background-color: oklch(67.597% 0.13338 58.189);
-	/* Warm amber-orange */
-	color: oklch(0.98 0.02 80);
-	/* Light cream for contrast */
+	background-color: oklch(0.65 0.2 260);
+	/* Slightly lighter blue for dark mode */
+	color: oklch(1 0 0);
+	/* White for contrast */
 }

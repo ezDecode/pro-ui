@@ -47,7 +47,7 @@ const BadgeButton = React.forwardRef<HTMLButtonElement, BadgeButtonProps>(
                     color: "var(--badge-button-text, rgba(255, 255, 255, 0.9))",
                     border: "1px solid rgba(255, 255, 255, 0)",
                     boxShadow: `
-						0px 1px 0.6px 0px rgba(255, 255, 255, 0.14) inset,
+						0px 1.2px 0.72px 0px rgba(255, 255, 255, 0.14) inset,
 						0px 0.6px 3.5px rgba(0, 0, 0, 0.44)
 					`.trim(),
                 };
@@ -72,7 +72,7 @@ const BadgeButton = React.forwardRef<HTMLButtonElement, BadgeButtonProps>(
                     color: textColor,
                     border: "1px solid rgba(255, 255, 255, 0)",
                     boxShadow: `
-						0px 1px 0.6px 0px ${shineColor} inset,
+						0px 1.2px 0.72px 0px ${shineColor} inset,
 						0px 0.6px 3.5px ${shadowColor}
 					`.trim(),
                 };

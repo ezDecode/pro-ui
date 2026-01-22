@@ -56,10 +56,10 @@ export default function Home() {
 
 				{/* Heading */}
 				<h1 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
-					Hey there!!
+					Flairō UI 
 					<br />
 					<span className="text-muted-foreground">
-						I'm a solo dev building motion interactions.
+						Motion Interactions.
 					</span>
 				</h1>
 
@@ -76,7 +76,7 @@ export default function Home() {
 					<Link href="/browse">
 						<BadgeButton
 							size="default"
-							color="#FDAC16"
+							color="#0256FE"
 							className="flex items-center"
 						>
 							Browse components
