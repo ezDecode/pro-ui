@@ -44,7 +44,7 @@ export function Navbar({ navigation }: NavbarProps) {
             aria-label="Home"
           >
             <Image
-              src="/media/img_logo.png"
+              src="/media/img_logo.webp"
               alt="Logo"
               width={36}
               height={36}

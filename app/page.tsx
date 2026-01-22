@@ -45,7 +45,7 @@ export default function Home() {
 				<div className="relative mb-6 w-fit border-r border-edge">
 					<div className="grid-pattern-subtle">
 						<Image
-							src={"/media/img_logo.png"}
+							src={"/media/img_logo.webp"}
 							alt="Skie Logo"
 							width={140}
 							height={140}

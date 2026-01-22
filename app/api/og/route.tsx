@@ -59,7 +59,7 @@ export async function GET(request: Request) {
 			? `${requestUrl.protocol}//${requestUrl.host}`
 			: siteConfig.url;
 
-	const iconUrl = `${baseUrl}/media/img_logo.png`;
+	const iconUrl = `${baseUrl}/media/img_logo.webp`;
 
 	try {
 		// Load Geist font weights from Google Fonts
